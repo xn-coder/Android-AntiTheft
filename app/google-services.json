@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "331990668182",
+    "project_id": "android-security-3e7d5",
+    "storage_bucket": "android-security-3e7d5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:331990668182:android:5baf817fb66a2687d6c3b7",
+        "android_client_info": {
+          "package_name": "com.xncoder.advanceprotection"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCsVsfwyuN7a61ncd79kADKU8OYSoLbwCs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

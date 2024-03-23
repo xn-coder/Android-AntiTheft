@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Advance Protection</string>
+    <string name="welcome">Welcome to Anti-Theft System</string>
+    <string name="get_started">Get Started</string>
+    <string name="login">Login</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="forget_password">Forget password?</string>
+    <string name="not_register">Not yet registered? Sign up</string>
+    <string name="register">Register</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="already_register">Already registered? Sign In</string>
+    <string name="forget_password1">Forget Password</string>
+    <string name="next">Next</string>
+    <string name="sign_in">Sign In</string>
+    <string name="sign_up">Sign Up</string>
+</resources>
