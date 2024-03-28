@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
 
     <application
         android:allowBackup="true"
@@ -12,8 +13,35 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AdvanceProtection"
+        android:theme="@style/AppTheme"
         tools:targetApi="31">
+        <activity
+            android:name=".ContactPopup"
+            android:exported="false" />
+        <activity
+            android:name=".contact_popup"
+            android:exported="false" />
+        <activity
+            android:name=".AddContact"
+            android:exported="false" />
+        <activity
+            android:name=".DummyPowerScreen"
+            android:exported="false"
+            android:showOnLockScreen="true"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+
+        <service
+            android:name=".PowerButtonService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity
+            android:name=".Verify"
+            android:exported="false" />
+        <activity
+            android:name=".Home"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".Forget_Password"
             android:exported="false" />
@@ -22,13 +50,13 @@
             android:exported="false" />
         <activity
             android:name=".Login"
-            android:exported="true">
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

@@ -9,7 +9,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="@drawable/loginbkg"
+    android:background="@drawable/background"
     tools:context=".Register">
 
     <androidx.cardview.widget.CardView
@@ -18,7 +18,7 @@
         android:layout_margin="30dp"
         app:cardCornerRadius="30dp"
         app:cardElevation="20dp"
-        android:background="@drawable/custom_edittext">
+        style="@style/cardViewBackground">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -26,7 +26,6 @@
             android:layout_gravity="center_horizontal"
             android:orientation="vertical"
             android:padding="24dp">
-
 
             <TextView
                 android:id="@+id/registerText"
@@ -44,11 +43,10 @@
                 android:layout_height="50dp"
                 android:layout_marginTop="40dp"
                 android:background="@drawable/custom_edittext"
-                android:drawableStart="@drawable/ic_baseline_person_24"
+                style="@style/emailInput"
                 android:drawablePadding="8dp"
                 android:hint="@string/email"
                 android:padding="8dp"
-                android:textColor="@color/black"
                 android:textColorHighlight="@color/cardview_dark_background" />
 
             <EditText
@@ -57,12 +55,11 @@
                 android:layout_height="50dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/custom_edittext"
-                android:drawableStart="@drawable/ic_baseline_lock_24"
+                style="@style/passwordInput"
                 android:drawablePadding="8dp"
                 android:hint="@string/password"
                 android:inputType="textPassword"
                 android:padding="8dp"
-                android:textColor="@color/black"
                 android:textColorHighlight="@color/cardview_dark_background" />
 
             <EditText
@@ -70,12 +67,11 @@
                 android:layout_height="50dp"
                 android:id="@+id/reg_confirmpassword"
                 android:background="@drawable/custom_edittext"
-                android:drawableStart="@drawable/ic_baseline_lock_24"
+                style="@style/passwordInput"
                 android:drawablePadding="8dp"
                 android:hint="@string/confirm_password"
                 android:padding="8dp"
                 android:inputType="textPassword"
-                android:textColor="@color/black"
                 android:textColorHighlight="@color/cardview_dark_background"
                 android:layout_marginTop="20dp"/>
 
@@ -94,14 +90,13 @@
     </androidx.cardview.widget.CardView>
 
     <TextView
+        android:id="@+id/signinText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="8dp"
         android:text="@string/already_register"
-        android:textSize="14sp"
+        android:textSize="16sp"
         android:textAlignment="center"
-        android:id="@+id/signinText"
-        android:textColor="@color/purple"
         android:layout_marginBottom="20dp"/>
 
 </LinearLayout>

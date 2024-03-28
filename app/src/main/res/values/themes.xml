@@ -1,10 +1,31 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.AdvanceProtection" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="AppTheme" parent="Theme.Material3.Light.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
-
-    <style name="Theme.AdvanceProtection" parent="Base.Theme.AdvanceProtection" />
-
+    <style name="cardViewBackground">
+        <item name="cardBackgroundColor">@color/cardViewLight</item>
+    </style>
+    <style name="emailInput">
+        <item name="android:drawableStart">@drawable/ic_person_dark_24</item>
+        <item name="android:textColor">@color/inputDarkTextColor</item>
+    </style>
+    <style name="passwordInput">
+        <item name="android:drawableStart">@drawable/ic_lock_dark_24</item>
+        <item name="android:textColor">@color/inputDarkTextColor</item>
+    </style>
+    <style name="backArrow">
+        <item name="android:src">@drawable/ic_arrow_back_dark_24</item>
+    </style>
+    <style name="buttonStart">
+        <item name="android:background">@color/buttonBackgroundColor</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+    <style name="backgroundHome">
+        <item name="android:background">@color/backgroundLightColor</item>
+    </style>
+    <style name="listView">
+        <item name="android:textColor">@color/black</item>
+    </style>
 </resources>

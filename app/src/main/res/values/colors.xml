@@ -4,4 +4,12 @@
     <color name="white">#FFFFFFFF</color>
     <color name="purple">#8692f7</color>
     <color name="sky">#37CAAC</color>
+    <color name="bg_popup">#08070707</color>
+    <color name="cardViewLight">#FFFFFF</color>
+    <color name="cardViewDark">#303030</color>
+    <color name="inputLightTextColor">#FFFFFF</color>
+    <color name="inputDarkTextColor">#000000</color>
+    <color name="buttonBackgroundColor">#8591F6</color>
+    <color name="backgroundDarkColor">#303030</color>
+    <color name="backgroundLightColor">#FEFEFE</color>
 </resources>
