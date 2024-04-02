@@ -20,4 +20,6 @@
     <string name="please_verify_your_email_address_by_clicking_the_link_sent_to">Please verify your email address by clicking the link sent to :</string>
     <string name="resend">Resend</string>
     <string name="go_to_login">Go to Login</string>
+    <string name="tfe_od_app_name" translation_description="Object Detection demo app [CHAR_LIMIT=40]">Face Recognition</string>
+    <string name="tfe_od_camera_error" translation_description="Error regarding camera support[CHAR_LIMIT=40]">This device doesn\'t support Camera2 API.</string>
 </resources>

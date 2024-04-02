@@ -22,6 +22,10 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        Intent homeIntent = new Intent(MainActivity.this, Home.class);
+        if (new SaveCredentials(this).getAllUsers().get(0) != null)
+            startActivity(homeIntent);
         Button get_start = findViewById(R.id.getStartButton);
         get_start.setOnClickListener(view -> {
             Intent getStartIntent = new Intent(MainActivity.this, Login.class);

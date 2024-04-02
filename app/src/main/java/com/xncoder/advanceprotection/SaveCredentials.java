@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class SaveCredentials extends SQLiteOpenHelper {
-    private static final String TAG = "DatabaseHelper";
     private static final String DATABASE_NAME = "credentials.db";
     private static final int DATABASE_VERSION = 1;
     private static final String TABLE_NAME = "users";

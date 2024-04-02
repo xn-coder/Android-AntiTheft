@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId = "com.xncoder.advanceprotection"
-        minSdk = 24
+        minSdk = 26
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -33,12 +33,14 @@ android {
 }
 
 dependencies {
-
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
     implementation(libs.constraintlayout)
     implementation(libs.firebase.auth)
+    implementation(libs.firebase.database)
+    implementation("org.tensorflow:tensorflow-lite:2.15.0")
+    implementation("com.google.mlkit:face-detection:16.1.6")
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)

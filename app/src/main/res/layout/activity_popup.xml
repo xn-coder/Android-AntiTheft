@@ -4,8 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardCornerRadius="30dp"
-    app:cardBackgroundColor="@android:color/transparent">
+    app:cardCornerRadius="30dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -27,7 +26,8 @@
                 android:id="@+id/popup_icon"
                 android:layout_width="40sp"
                 android:layout_height="40sp"
-                android:src="@drawable/ic_baseline_done_24"/>
+                android:src="@drawable/ic_baseline_done_24"
+                android:layout_marginEnd="15dp"/>
 
             <TextView
                 android:id="@+id/popup_msg"

@@ -4,6 +4,10 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
 
     <application
         android:allowBackup="true"
@@ -16,11 +20,12 @@
         android:theme="@style/AppTheme"
         tools:targetApi="31">
         <activity
-            android:name=".ContactPopup"
+            android:name=".AddFace"
             android:exported="false" />
         <activity
-            android:name=".contact_popup"
-            android:exported="false" />
+            android:name=".FaceDetection.CameraActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".AddContact"
             android:exported="false" />

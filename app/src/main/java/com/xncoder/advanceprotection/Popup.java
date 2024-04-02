@@ -1,6 +1,8 @@
 package com.xncoder.advanceprotection;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
@@ -18,6 +20,7 @@ public class Popup extends PopupWindow {
         setContentView(contentView);
         setWidth(contentView.getResources().getDisplayMetrics().widthPixels - 100);
         setHeight(WindowManager.LayoutParams.WRAP_CONTENT);
+        setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         setFocusable(true);
 
         ImageView icon = (ImageView) contentView.findViewById(R.id.popup_icon);
