@@ -1,9 +1,16 @@
 package com.xncoder.advanceprotection;
 
 import android.Manifest;
+import android.app.NotificationManager;
+import android.app.admin.DeviceAdminReceiver;
+import android.app.admin.DevicePolicyManager;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,6 +22,7 @@ import android.net.Uri;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -24,17 +32,20 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.xncoder.advanceprotection.FaceDetection.CameraActivity;
+import com.xncoder.advanceprotection.FaceDetection.SaveFaces;
 
 public class Home extends AppCompatActivity {
 
     private SaveCredentials credentials;
-    private Switch contactSwitch;
+    private Switch contactSwitch, faceSwitch, display, dnd, sys;
     private final int PERMISSION_REQUEST_READ_CONTACTS = 1;
     private final int PERMISSION_REQUEST_CAMERA = 2;
-    private Database database;
-    private String emailID;
+    private final int REQUEST_CODE_DRAW_OVERLAY_PERMISSION = 3;
+    private final int REQUEST_CODE_WRITE_SETTINGS = 4;
+    private final int REQUEST_CODE_DND = 5;
     private SaveContacts saveContacts;
+    private SaveFaces saveFaces;
+    private NotificationManager notificationManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +57,13 @@ public class Home extends AppCompatActivity {
             return insets;
         });
 
+        Database database = new Database(this);
+        String emailID = new SaveCredentials(this).getAllUsers().get(0);
+        if (emailID != null) {
+            database.getFaceData(emailID.replace(".", "_"));
+            database.getContactData(emailID.replace(".", "_"));
+        }
+
         Toolbar myToolbar = findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
 
@@ -56,39 +74,113 @@ public class Home extends AppCompatActivity {
         camera.setOnClickListener(view -> camera());
 
         saveContacts = new SaveContacts(this);
-        database = new Database(this);
-        emailID = new SaveCredentials(this).getAllUsers().get(0);
-        if (emailID != null)
-            database.getUserData(emailID.replace(".", "_"));
-
         contactSwitch = findViewById(R.id.contact_switch);
-        contactSwitch.setOnClickListener(view -> {
-            if (saveContacts.getAllData().getCount() == 0) {
-                contacts();
-            }
-        });
+        contactSwitch.setOnClickListener(view -> contacts());
         contactSwitch.setChecked(saveContacts.getAllData().getCount() != 0);
+
+        saveFaces = new SaveFaces(this);
+        faceSwitch = findViewById(R.id.camera_switch);
+        faceSwitch.setOnClickListener(view -> camera());
+        faceSwitch.setChecked(!saveFaces.getAllData().isEmpty());
+
+        display = findViewById(R.id.display_switch);
+        display.setOnClickListener(view -> displayPermission());
+
+        dnd = findViewById(R.id.dnd_switch);
+        dnd.setOnClickListener(view -> dndPermission());
+
+        sys = findViewById(R.id.sys_switch);
+        sys.setOnClickListener(view -> sysPermission());
 
         Button startAction = findViewById(R.id.startAction);
         startAction.setOnClickListener(view -> {
-            if(contactSwitch.isChecked()){
-                Toast.makeText(this, "Initializing...", Toast.LENGTH_SHORT).show();
-            } else {
+            if(contactSwitch.isChecked() && faceSwitch.isChecked() && display.isChecked() && dnd.isChecked() && sys.isChecked()) {
+                startProcess();
+            } else if (!contactSwitch.isChecked()) {
                 Toast.makeText(this, "Please enable the add contact", Toast.LENGTH_SHORT).show();
+            } else if (!faceSwitch.isChecked()) {
+                Toast.makeText(this, "Please enable the add face", Toast.LENGTH_SHORT).show();
+            } else if (!display.isChecked()) {
+                Toast.makeText(this, "Please enable the display permission", Toast.LENGTH_SHORT).show();
+            } else if (!dnd.isChecked()) {
+                Toast.makeText(this, "Please enable the DND mode permission", Toast.LENGTH_SHORT).show();
+            } else if (!sys.isChecked()) {
+                Toast.makeText(this, "Please enable the system setting permission", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        contactSwitch.setChecked(saveContacts.getAllData().getCount() != 0);
+    private void displayPermission() {
+        if (!Settings.canDrawOverlays(this)) {
+            Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:" + getPackageName()));
+            startActivityForResult(intent, REQUEST_CODE_DRAW_OVERLAY_PERMISSION);
+        } else {
+            display.setChecked(true);
+        }
+    }
+
+    private void sysPermission() {
+        if (!Settings.System.canWrite(this)) {
+            Intent intent = new Intent(Settings.ACTION_MANAGE_WRITE_SETTINGS);
+            intent.setData(Uri.parse("package:" + getPackageName()));
+            startActivityForResult(intent, REQUEST_CODE_WRITE_SETTINGS);
+        } else {
+            sys.setChecked(true);
+        }
+    }
+
+    private void dndPermission() {
+        notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        if (!notificationManager.isNotificationPolicyAccessGranted()) {
+            Intent intent = new Intent(android.provider.Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS);
+            startActivityForResult(intent, REQUEST_CODE_DND);
+        } else {
+            dnd.setChecked(true);
+        }
     }
 
     @Override
     protected void onRestart() {
         super.onRestart();
         contactSwitch.setChecked(saveContacts.getAllData().getCount() != 0);
+        faceSwitch.setChecked(!saveFaces.getAllData().isEmpty());
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        contactSwitch.setChecked(saveContacts.getAllData().getCount() != 0);
+        faceSwitch.setChecked(!saveFaces.getAllData().isEmpty());
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_CODE_WRITE_SETTINGS) {
+            if (Settings.System.canWrite(this)) {
+                sys.setChecked(true);
+            } else {
+                sys.setChecked(false);
+            }
+        } else if (requestCode == REQUEST_CODE_DRAW_OVERLAY_PERMISSION) {
+            if (Settings.canDrawOverlays(this)) {
+                display.setChecked(true);
+            } else {
+                display.setChecked(false);
+            }
+        } else if (requestCode == REQUEST_CODE_DND) {
+            if (notificationManager.isNotificationPolicyAccessGranted()) {
+                dnd.setChecked(true);
+            } else {
+                dnd.setChecked(false);
+            }
+        }
+    }
+
+    private void startProcess() {
+//            startActivity(new Intent(this, DummyPowerScreen.class));
+//            Toast.makeText(this, "Initializing...", Toast.LENGTH_SHORT).show();
+        startService(new Intent(this, StartService.class));
     }
 
     private void camera() {
@@ -142,8 +234,8 @@ public class Home extends AppCompatActivity {
     private void showCameraPermission() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Permission Required");
-        builder.setMessage("This app needs access to your contacts to function properly.");
-        builder.setPositiveButton("OK", (dialog, which) -> ActivityCompat.requestPermissions(Home.this, new String[]{Manifest.permission.READ_CONTACTS}, PERMISSION_REQUEST_READ_CONTACTS));
+        builder.setMessage("This app needs access to your camera to function properly.");
+        builder.setPositiveButton("OK", (dialog, which) -> ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, PERMISSION_REQUEST_CAMERA));
         builder.setNegativeButton("Cancel", null);
         builder.show();
     }
@@ -151,7 +243,7 @@ public class Home extends AppCompatActivity {
     private void showCameraPermissionSettingsDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Permission Required");
-        builder.setMessage("This app needs access to your contacts. You can grant the permission in app settings.");
+        builder.setMessage("This app needs access to your camera. You can grant the permission in app settings.");
         builder.setPositiveButton("Go to Settings", (dialog, which) -> {
             Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, Uri.fromParts("package", getPackageName(), null));
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -179,7 +271,7 @@ public class Home extends AppCompatActivity {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 startCamera();
             } else {
-                if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.READ_CONTACTS)) {
+                if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.CAMERA)) {
                     showCameraPermission();
                 } else {
                     showCameraPermissionSettingsDialog();

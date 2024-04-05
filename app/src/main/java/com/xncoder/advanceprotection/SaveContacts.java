@@ -9,9 +9,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class SaveContacts extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "contacts.db";
     private static final String TABLE_NAME = "contacts_table";
-    private static final String COL_1 = "ID";
-    private static final String COL_2 = "NAME";
-    private static final String COL_3 = "NUMBER";
+    private static final String COL_1 = "NAME";
+    private static final String COL_2 = "NUMBER";
 
     public SaveContacts(Context context) {
         super(context, DATABASE_NAME, null, 1);
@@ -31,8 +30,8 @@ public class SaveContacts extends SQLiteOpenHelper {
     public boolean insertData(String name, String number) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(COL_2, name);
-        contentValues.put(COL_3, number);
+        contentValues.put(COL_1, name);
+        contentValues.put(COL_2, number);
         long result = db.insert(TABLE_NAME, null, contentValues);
         return result != -1;
     }

@@ -102,6 +102,132 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/lock_screen_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="15dp"
+        android:paddingVertical="20dp"
+        android:background="@drawable/border_purple">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Display Over other apps"
+                style="@style/listView"
+                android:textSize="18sp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/listView"
+                android:text="Show popup in background"
+                android:textSize="13sp"/>
+
+        </LinearLayout>
+
+        <Switch
+            android:id="@+id/display_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:track="@drawable/switch_track"
+            android:thumb="@drawable/switch_thumb"
+            android:gravity="end" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/dnd_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="15dp"
+        android:paddingVertical="20dp"
+        android:background="@drawable/border_purple">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="DND Mode"
+                style="@style/listView"
+                android:textSize="18sp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/listView"
+                android:text="Do not distrub mode"
+                android:textSize="13sp"/>
+
+        </LinearLayout>
+
+        <Switch
+            android:id="@+id/dnd_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:track="@drawable/switch_track"
+            android:thumb="@drawable/switch_thumb"
+            android:gravity="end" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/setting_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="15dp"
+        android:paddingVertical="20dp"
+        android:background="@drawable/border_purple">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="System Setting"
+                style="@style/listView"
+                android:textSize="18sp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/listView"
+                android:text="Controls the brightness level"
+                android:textSize="13sp"/>
+
+        </LinearLayout>
+
+        <Switch
+            android:id="@+id/sys_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:track="@drawable/switch_track"
+            android:thumb="@drawable/switch_thumb"
+            android:gravity="end" />
+
+    </LinearLayout>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

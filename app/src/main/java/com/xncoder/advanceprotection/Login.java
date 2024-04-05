@@ -45,22 +45,22 @@ public class Login extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        TextView signupText = (TextView) findViewById(R.id.signupText);
+        TextView signupText = findViewById(R.id.signupText);
         signupText.setOnClickListener(view -> {
             Intent signupIntent = new Intent(Login.this, Register.class);
             startActivity(signupIntent);
         });
 
-        TextView fgPasswordText = (TextView) findViewById(R.id.fg_password);
+        TextView fgPasswordText = findViewById(R.id.fg_password);
         fgPasswordText.setOnClickListener(view -> {
             Intent fgPasswordIntent = new Intent(Login.this, Forget_Password.class);
             startActivity(fgPasswordIntent);
         });
 
         auth = FirebaseAuth.getInstance();
-        EditText emailText = (EditText) findViewById(R.id.login_email);
-        EditText passwordText = (EditText) findViewById(R.id.login_password);
-        Button loginBtn = (Button) findViewById(R.id.loginButton);
+        EditText emailText = findViewById(R.id.login_email);
+        EditText passwordText = findViewById(R.id.login_password);
+        Button loginBtn = findViewById(R.id.loginButton);
         Intent homeIntent = new Intent(Login.this, Home.class);
         homeIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         credentials = new SaveCredentials(this);
@@ -108,6 +108,7 @@ public class Login extends AppCompatActivity {
                             if (task.isSuccessful()) {
                                 FirebaseUser user = auth.getCurrentUser();
                                 if(user != null && user.isEmailVerified()) {
+
                                     Toast.makeText(this, "Saved : " + credentials.addUser(email, password) , Toast.LENGTH_SHORT).show();
                                     popupWindow = new Popup(getApplicationContext(), true, "Login Successfully");
                                     popupWindow.showAtLocation(findViewById(android.R.id.content), Gravity.CENTER, 0, 0);

@@ -106,16 +106,16 @@ public class AddContact extends AppCompatActivity {
         contactList.setAdapter(adapter);
 
         popupWindow = new PopupWindow(popupView, (int) (getResources().getDisplayMetrics().widthPixels * 0.9),
-                (int) (getResources().getDisplayMetrics().heightPixels * 0.7));
+                (int) (getResources().getDisplayMetrics().heightPixels * 0.8));
 
         okButton.setOnClickListener(v -> {
             selectedContacts.clear();
             saveContacts.deleteAllData();
-            database.deleteUserAllData(new SaveCredentials(this).getAllUsers().get(0).replace(".", "_"));
+            database.deleteAllContactData(new SaveCredentials(this).getAllUsers().get(0).replace(".", "_"));
             adapter.getContact().forEach((s, customItems) -> {
                 selectedContacts.add(customItems);
                 saveContacts.insertData(customItems.getName(), customItems.getNumber());
-                database.setData(new SaveCredentials(this).getAllUsers().get(0).replace(".", "_"), customItems.getNumber(), customItems.getName());
+                database.setContactData(new SaveCredentials(this).getAllUsers().get(0).replace(".", "_"), customItems.getNumber(), customItems.getName());
             });
             updateContactList();
             popupWindow.dismiss();

@@ -1,45 +1,40 @@
 package com.xncoder.advanceprotection;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.BaseAdapter;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
+import com.xncoder.advanceprotection.FaceDetection.SaveFaces;
+
 import java.util.List;
 
-public class CustomContactAdapter extends BaseAdapter {
+public class CustomFaceAdapter extends BaseAdapter {
     private Context context;
-    private List<CustomItems> contacts;
-    private SaveContacts saveContacts;
+    private List<CustomItems> faces;
+    private SaveFaces saveFaces;
     private Database database;
 
-    public CustomContactAdapter(Context context, List<CustomItems> contacts) {
+    public CustomFaceAdapter(Context context, List<CustomItems> faces) {
         this.context = context;
-        this.contacts = contacts;
-        saveContacts = new SaveContacts(context);
+        this.faces = faces;
+        saveFaces = new SaveFaces(context);
         database = new Database(context);
     }
 
     @Override
     public int getCount() {
-        return contacts.size();
+        return faces.size();
     }
 
     @Override
+
     public Object getItem(int position) {
-        return contacts.get(position);
+        return faces.get(position);
     }
 
     @Override
@@ -58,17 +53,17 @@ public class CustomContactAdapter extends BaseAdapter {
         TextView numberTextView = convertView.findViewById(R.id.list_number);
         ImageButton removeItem = convertView.findViewById(R.id.contact_select);
 
-        CustomItems contact = contacts.get(position);
+        CustomItems contact = faces.get(position);
         nameTextView.setText(contact.getName());
         numberTextView.setText(contact.getNumber());
         removeItem.setOnClickListener(view -> {
-            if (saveContacts.deleteData(contacts.get(position).getNumber())) {
-                database.deleteContactData(new SaveCredentials(context).getAllUsers().get(0).replace(".", "_"), contacts.get(position).getNumber());
-                Toast.makeText(context, contacts.get(position).getNumber() + "\nremoved", Toast.LENGTH_SHORT).show();
-                contacts.remove(position);
+            if (saveFaces.deleteEntry(faces.get(position).getNumber())) {
+                database.deleteFaceData(new SaveCredentials(context).getAllUsers().get(0).replace(".", "_"), faces.get(position).getNumber());
+                Toast.makeText(context, faces.get(position).getNumber() + "\nremoved", Toast.LENGTH_SHORT).show();
+                faces.remove(position);
             }
             else
-                Toast.makeText(context, contacts.get(position).getNumber()+"\nfailed", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, faces.get(position).getNumber()+"\nfailed", Toast.LENGTH_SHORT).show();
             notifyDataSetChanged();
         });
 

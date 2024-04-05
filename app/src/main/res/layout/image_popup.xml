@@ -13,8 +13,8 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:gravity="center"
-        android:paddingVertical="10dp"
-        android:paddingHorizontal="15dp">
+        android:paddingVertical="12dp"
+        android:paddingHorizontal="20dp">
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
@@ -43,8 +43,7 @@
                     android:layout_margin="20dp"
                     android:scaleType="centerCrop"
                     android:adjustViewBounds="true"
-                    android:src="@drawable/ic_baseline_image_24"
-                    />
+                    android:src="@drawable/ic_baseline_image_24" />
 
                 <EditText
                     android:layout_gravity="center"
@@ -53,6 +52,7 @@
                     android:layout_marginHorizontal="20dp"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
+                    android:hint="Enter your name"
                     android:textColor="@color/purple"/>
 
             </LinearLayout>
