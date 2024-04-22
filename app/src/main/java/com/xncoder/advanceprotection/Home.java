@@ -1,20 +1,21 @@
 package com.xncoder.advanceprotection;
 
 import android.Manifest;
+import android.app.ActivityManager;
 import android.app.NotificationManager;
-import android.app.admin.DeviceAdminReceiver;
-import android.app.admin.DevicePolicyManager;
-import android.content.ComponentName;
+import android.app.Service;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
-import android.os.Build;
+import android.location.LocationManager;
 import android.os.Bundle;
-import android.view.KeyEvent;
+import android.telephony.TelephonyManager;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.Toast;
 import android.provider.Settings;
@@ -27,25 +28,23 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.xncoder.advanceprotection.FaceDetection.SaveFaces;
-
 public class Home extends AppCompatActivity {
 
-    private SaveCredentials credentials;
-    private Switch contactSwitch, faceSwitch, display, dnd, sys;
-    private final int PERMISSION_REQUEST_READ_CONTACTS = 1;
-    private final int PERMISSION_REQUEST_CAMERA = 2;
-    private final int REQUEST_CODE_DRAW_OVERLAY_PERMISSION = 3;
-    private final int REQUEST_CODE_WRITE_SETTINGS = 4;
-    private final int REQUEST_CODE_DND = 5;
-    private SaveContacts saveContacts;
-    private SaveFaces saveFaces;
+    private Button startAction;
+    private Switch dnd, sys, sms, code, camera, location;
+    private final int REQUEST_CODE_WRITE_SETTINGS = 1;
+    private final int REQUEST_CODE_DND = 2;
+    private final int REQUEST_CODE_SMS = 3;
+    private final int REQUEST_CODE_CAMERA = 4;
+    private final int REQUEST_CODE_GPS_LOCATION = 5;
     private NotificationManager notificationManager;
+    private boolean isProcessStart;
+    private SaveSecureCode saveSecureCode;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,66 +56,123 @@ public class Home extends AppCompatActivity {
             return insets;
         });
 
-        Database database = new Database(this);
-        String emailID = new SaveCredentials(this).getAllUsers().get(0);
-        if (emailID != null) {
-            database.getFaceData(emailID.replace(".", "_"));
-            database.getContactData(emailID.replace(".", "_"));
-        }
-
         Toolbar myToolbar = findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
 
-        View contact = findViewById(R.id.contact_layout);
-        contact.setOnClickListener(view -> contacts());
+        isProcessStart = isServiceRunning(this, SmsService.class);
 
-        View camera = findViewById(R.id.camera_layout);
-        camera.setOnClickListener(view -> camera());
-
-        saveContacts = new SaveContacts(this);
-        contactSwitch = findViewById(R.id.contact_switch);
-        contactSwitch.setOnClickListener(view -> contacts());
-        contactSwitch.setChecked(saveContacts.getAllData().getCount() != 0);
-
-        saveFaces = new SaveFaces(this);
-        faceSwitch = findViewById(R.id.camera_switch);
-        faceSwitch.setOnClickListener(view -> camera());
-        faceSwitch.setChecked(!saveFaces.getAllData().isEmpty());
-
-        display = findViewById(R.id.display_switch);
-        display.setOnClickListener(view -> displayPermission());
-
+        notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         dnd = findViewById(R.id.dnd_switch);
+        LinearLayout dnd_lay = findViewById(R.id.dnd_layout);
         dnd.setOnClickListener(view -> dndPermission());
+        dnd_lay.setOnClickListener(view -> dndPermission());
+        if(notificationManager.isNotificationPolicyAccessGranted())
+            dnd.setChecked(true);
 
         sys = findViewById(R.id.sys_switch);
+        LinearLayout sys_lay = findViewById(R.id.sys_layout);
         sys.setOnClickListener(view -> sysPermission());
+        sys_lay.setOnClickListener(view -> sysPermission());
+        if(Settings.System.canWrite(this))
+            sys.setChecked(true);
 
-        Button startAction = findViewById(R.id.startAction);
+        sms = findViewById(R.id.sms_switch);
+        LinearLayout sms_lay = findViewById(R.id.sms_layout);
+        sms.setOnClickListener(view -> smsPermission());
+        sms_lay.setOnClickListener(view -> smsPermission());
+        if(checkSelfPermission(android.Manifest.permission.RECEIVE_SMS) == PackageManager.PERMISSION_GRANTED)
+            sms.setChecked(true);
+
+        camera = findViewById(R.id.camera_switch);
+        LinearLayout camera_lay = findViewById(R.id.camera_layout);
+        camera.setOnClickListener(view -> cameraPermission());
+        camera_lay.setOnClickListener(view -> cameraPermission());
+        if(checkSelfPermission(Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED)
+            camera.setChecked(true);
+
+        location = findViewById(R.id.location_switch);
+        LinearLayout location_lay = findViewById(R.id.location_layout);
+        location.setOnClickListener(view -> getGPSPermission());
+        location_lay.setOnClickListener(view -> getGPSPermission());
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED)
+            location.setChecked(true);
+
+        saveSecureCode = new SaveSecureCode(this);
+        code = findViewById(R.id.code_switch);
+        LinearLayout code_lay = findViewById(R.id.code_layout);
+        code.setOnClickListener(view -> secureCode());
+        code_lay.setOnClickListener(view -> secureCode());
+        code.setChecked(saveSecureCode.getData()!=null);
+
+        startAction = findViewById(R.id.startAction);
         startAction.setOnClickListener(view -> {
-            if(contactSwitch.isChecked() && faceSwitch.isChecked() && display.isChecked() && dnd.isChecked() && sys.isChecked()) {
+            if(dnd.isChecked() && sys.isChecked() && sms.isChecked() && camera.isChecked() && location.isChecked()) {
                 startProcess();
-            } else if (!contactSwitch.isChecked()) {
-                Toast.makeText(this, "Please enable the add contact", Toast.LENGTH_SHORT).show();
-            } else if (!faceSwitch.isChecked()) {
-                Toast.makeText(this, "Please enable the add face", Toast.LENGTH_SHORT).show();
-            } else if (!display.isChecked()) {
-                Toast.makeText(this, "Please enable the display permission", Toast.LENGTH_SHORT).show();
             } else if (!dnd.isChecked()) {
                 Toast.makeText(this, "Please enable the DND mode permission", Toast.LENGTH_SHORT).show();
             } else if (!sys.isChecked()) {
                 Toast.makeText(this, "Please enable the system setting permission", Toast.LENGTH_SHORT).show();
+            } else if (!sms.isChecked()) {
+                Toast.makeText(this, "Please enable the read sms permission", Toast.LENGTH_SHORT).show();
+            } else if (!camera.isChecked()) {
+                Toast.makeText(this, "Please enable the send sms permission", Toast.LENGTH_SHORT).show();
+            } else if (!location.isChecked()) {
+                Toast.makeText(this, "Please enable the get location permission", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
-    private void displayPermission() {
-        if (!Settings.canDrawOverlays(this)) {
-            Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:" + getPackageName()));
-            startActivityForResult(intent, REQUEST_CODE_DRAW_OVERLAY_PERMISSION);
-        } else {
-            display.setChecked(true);
+    public static boolean isServiceRunning(Context context, Class<?> serviceClass) {
+        ActivityManager activityManager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
+        if (activityManager != null) {
+            for (ActivityManager.RunningServiceInfo service : activityManager.getRunningServices(Integer.MAX_VALUE)) {
+                if (serviceClass.getName().equals(service.service.getClassName())) {
+                    return true;
+                }
+            }
         }
+        return false;
+    }
+
+    private void startProcess() {
+        Intent processIntent = new Intent(this, SmsService.class);
+        if (isProcessStart) {
+            stopService(processIntent);
+            startAction.setText("Start");
+            Toast.makeText(this, "Stoped", Toast.LENGTH_SHORT).show();
+            isProcessStart = false;
+        } else {
+            Toast.makeText(this, "Starting...", Toast.LENGTH_SHORT).show();
+            startAction.setText("Stop");
+            startService(processIntent);
+            isProcessStart = true;
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        code.setChecked(saveSecureCode.getData()!=null);
+        isProcessStart = isServiceRunning(this, SmsService.class);
+        if (!isProcessStart) {
+            startAction.setText("Start");
+        } else {
+            startAction.setText("Stop");
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        Intent broadcastIntent = new Intent();
+        broadcastIntent.setAction("restartservice");
+        broadcastIntent.setClass(this, SmsReceiver.class);
+        this.sendBroadcast(broadcastIntent);
+        super.onDestroy();
+    }
+
+    private void secureCode() {
+        Intent codeIntent = new Intent(this, SecureCode.class);
+        startActivity(codeIntent);
     }
 
     private void sysPermission() {
@@ -130,7 +186,6 @@ public class Home extends AppCompatActivity {
     }
 
     private void dndPermission() {
-        notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         if (!notificationManager.isNotificationPolicyAccessGranted()) {
             Intent intent = new Intent(android.provider.Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS);
             startActivityForResult(intent, REQUEST_CODE_DND);
@@ -139,89 +194,43 @@ public class Home extends AppCompatActivity {
         }
     }
 
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-        contactSwitch.setChecked(saveContacts.getAllData().getCount() != 0);
-        faceSwitch.setChecked(!saveFaces.getAllData().isEmpty());
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        contactSwitch.setChecked(saveContacts.getAllData().getCount() != 0);
-        faceSwitch.setChecked(!saveFaces.getAllData().isEmpty());
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQUEST_CODE_WRITE_SETTINGS) {
-            if (Settings.System.canWrite(this)) {
-                sys.setChecked(true);
-            } else {
-                sys.setChecked(false);
-            }
-        } else if (requestCode == REQUEST_CODE_DRAW_OVERLAY_PERMISSION) {
-            if (Settings.canDrawOverlays(this)) {
-                display.setChecked(true);
-            } else {
-                display.setChecked(false);
-            }
-        } else if (requestCode == REQUEST_CODE_DND) {
-            if (notificationManager.isNotificationPolicyAccessGranted()) {
-                dnd.setChecked(true);
-            } else {
-                dnd.setChecked(false);
-            }
-        }
-    }
-
-    private void startProcess() {
-//            startActivity(new Intent(this, DummyPowerScreen.class));
-//            Toast.makeText(this, "Initializing...", Toast.LENGTH_SHORT).show();
-        startService(new Intent(this, StartService.class));
-    }
-
-    private void camera() {
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
-            startCamera();
+    private void smsPermission() {
+        if (checkSelfPermission(android.Manifest.permission.RECEIVE_SMS) != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(new String[]{android.Manifest.permission.RECEIVE_SMS}, REQUEST_CODE_SMS);
         } else {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, PERMISSION_REQUEST_CAMERA);
+            sms.setChecked(true);
         }
     }
 
-    private void startCamera() {
-        Intent cameraIntent = new Intent(this, AddFace.class);
-        startActivity(cameraIntent);
-    }
-
-    private void contacts() {
-        if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.READ_CONTACTS) == PackageManager.PERMISSION_GRANTED) {
-            readContacts();
+    private void cameraPermission() {
+        if (checkSelfPermission(Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(new String[]{Manifest.permission.CAMERA}, REQUEST_CODE_CAMERA);
         } else {
-            ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.READ_CONTACTS}, PERMISSION_REQUEST_READ_CONTACTS);
+            camera.setChecked(true);
         }
     }
 
-    private void readContacts() {
-        Intent addIntent = new Intent(Home.this, AddContact.class);
-        startActivity(addIntent);
+    private void getGPSPermission() {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, REQUEST_CODE_GPS_LOCATION);
+        } else {
+            location.setChecked(true);
+        }
     }
 
-    private void showContactPermission() {
+    private void showSMSPermission() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Permission Required");
-        builder.setMessage("This app needs access to your contacts to function properly.");
-        builder.setPositiveButton("OK", (dialog, which) -> ActivityCompat.requestPermissions(Home.this, new String[]{Manifest.permission.READ_CONTACTS}, PERMISSION_REQUEST_READ_CONTACTS));
+        builder.setMessage("This app needs to access your read sms permission to function properly.");
+        builder.setPositiveButton("OK", (dialog, which) -> requestPermissions(new String[]{android.Manifest.permission.RECEIVE_SMS}, REQUEST_CODE_SMS));
         builder.setNegativeButton("Cancel", null);
         builder.show();
     }
 
-    private void showContactPermissionSettingsDialog() {
+    private void showSMSPermissionSettingsDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Permission Required");
-        builder.setMessage("This app needs access to your contacts. You can grant the permission in app settings.");
+        builder.setMessage("This app needs access to your read sms. You can grant the permission in app settings.");
         builder.setPositiveButton("Go to Settings", (dialog, which) -> {
             Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, Uri.fromParts("package", getPackageName(), null));
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -234,8 +243,8 @@ public class Home extends AppCompatActivity {
     private void showCameraPermission() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Permission Required");
-        builder.setMessage("This app needs access to your camera to function properly.");
-        builder.setPositiveButton("OK", (dialog, which) -> ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, PERMISSION_REQUEST_CAMERA));
+        builder.setMessage("This app needs to access your send sms permission to function properly.");
+        builder.setPositiveButton("OK", (dialog, which) -> requestPermissions(new String[]{Manifest.permission.CAMERA}, REQUEST_CODE_CAMERA));
         builder.setNegativeButton("Cancel", null);
         builder.show();
     }
@@ -243,7 +252,29 @@ public class Home extends AppCompatActivity {
     private void showCameraPermissionSettingsDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Permission Required");
-        builder.setMessage("This app needs access to your camera. You can grant the permission in app settings.");
+        builder.setMessage("This app needs access to your send sms. You can grant the permission in app settings.");
+        builder.setPositiveButton("Go to Settings", (dialog, which) -> {
+            Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, Uri.fromParts("package", getPackageName(), null));
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+        });
+        builder.setNegativeButton("Cancel", null);
+        builder.show();
+    }
+
+    private void showLocationPermission() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Permission Required");
+        builder.setMessage("This app needs to access your location permission to function properly.");
+        builder.setPositiveButton("OK", (dialog, which) -> ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, REQUEST_CODE_GPS_LOCATION));
+        builder.setNegativeButton("Cancel", null);
+        builder.show();
+    }
+
+    private void showLocationPermissionSettingsDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Permission Required");
+        builder.setMessage("This app needs access to your location. You can grant the permission in app settings.");
         builder.setPositiveButton("Go to Settings", (dialog, which) -> {
             Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, Uri.fromParts("package", getPackageName(), null));
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -256,27 +287,42 @@ public class Home extends AppCompatActivity {
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == PERMISSION_REQUEST_READ_CONTACTS) {
+        if(requestCode == REQUEST_CODE_SMS) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                readContacts();
+                sms.setChecked(true);
+            } else if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.RECEIVE_SMS)) {
+                showSMSPermission();
             } else {
-                if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.READ_CONTACTS)) {
-                    showContactPermission();
-                } else {
-                    showContactPermissionSettingsDialog();
-                }
+                showSMSPermissionSettingsDialog();
             }
         }
-        if (requestCode == PERMISSION_REQUEST_CAMERA) {
+        if(requestCode == REQUEST_CODE_CAMERA) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                startCamera();
+                camera.setChecked(true);
+            } else if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.CAMERA)) {
+                showCameraPermission();
             } else {
-                if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.CAMERA)) {
-                    showCameraPermission();
-                } else {
-                    showCameraPermissionSettingsDialog();
-                }
+                showCameraPermissionSettingsDialog();
             }
+        }
+        if (requestCode == REQUEST_CODE_GPS_LOCATION) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                location.setChecked(true);
+            } else if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_BACKGROUND_LOCATION)) {
+                showLocationPermission();
+            } else {
+                showLocationPermissionSettingsDialog();
+            }
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_CODE_WRITE_SETTINGS) {
+            sys.setChecked(Settings.System.canWrite(this));
+        } else if (requestCode == REQUEST_CODE_DND) {
+            dnd.setChecked(notificationManager.isNotificationPolicyAccessGranted());
         }
     }
 
@@ -289,7 +335,7 @@ public class Home extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.signoutBtn) {
-            credentials = new SaveCredentials(this);
+            SaveCredentials credentials = new SaveCredentials(this);
             credentials.clearDatabase();
             Intent loginIntent = new Intent(Home.this, Login.class);
             startActivity(loginIntent);

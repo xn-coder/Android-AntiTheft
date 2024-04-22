@@ -19,132 +19,6 @@
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"/>
 
     <LinearLayout
-        android:id="@+id/contact_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:paddingHorizontal="15dp"
-        android:paddingVertical="20dp"
-        android:background="@drawable/border_purple">
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Add Contact"
-                style="@style/listView"
-                android:textSize="18sp"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                style="@style/listView"
-                android:text="Add Contact for share locations in critical condition"
-                android:textSize="13sp"/>
-
-        </LinearLayout>
-
-        <Switch
-            android:id="@+id/contact_switch"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:track="@drawable/switch_track"
-            android:thumb="@drawable/switch_thumb"
-            android:gravity="end" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/camera_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:paddingHorizontal="15dp"
-        android:paddingVertical="20dp"
-        android:background="@drawable/border_purple">
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Add Faces"
-                style="@style/listView"
-                android:textSize="18sp"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                style="@style/listView"
-                android:text="Add faces for classify authorize users"
-                android:textSize="13sp"/>
-
-        </LinearLayout>
-
-        <Switch
-            android:id="@+id/camera_switch"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:track="@drawable/switch_track"
-            android:thumb="@drawable/switch_thumb"
-            android:gravity="end" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/lock_screen_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:paddingHorizontal="15dp"
-        android:paddingVertical="20dp"
-        android:background="@drawable/border_purple">
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Display Over other apps"
-                style="@style/listView"
-                android:textSize="18sp"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                style="@style/listView"
-                android:text="Show popup in background"
-                android:textSize="13sp"/>
-
-        </LinearLayout>
-
-        <Switch
-            android:id="@+id/display_switch"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:track="@drawable/switch_track"
-            android:thumb="@drawable/switch_thumb"
-            android:gravity="end" />
-
-    </LinearLayout>
-
-    <LinearLayout
         android:id="@+id/dnd_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -187,7 +61,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/setting_layout"
+        android:id="@+id/sys_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -220,6 +94,174 @@
 
         <Switch
             android:id="@+id/sys_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:track="@drawable/switch_track"
+            android:thumb="@drawable/switch_thumb"
+            android:gravity="end" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/sms_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="15dp"
+        android:paddingVertical="20dp"
+        android:background="@drawable/border_purple">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Read SMS"
+                style="@style/listView"
+                android:textSize="18sp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/listView"
+                android:text="Read sms for secure code listening"
+                android:textSize="13sp"/>
+
+        </LinearLayout>
+
+        <Switch
+            android:id="@+id/sms_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:track="@drawable/switch_track"
+            android:thumb="@drawable/switch_thumb"
+            android:gravity="end" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/camera_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="15dp"
+        android:paddingVertical="20dp"
+        android:background="@drawable/border_purple">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Flash Light"
+                style="@style/listView"
+                android:textSize="18sp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/listView"
+                android:text="Needs camera permission for flash light toggle"
+                android:textSize="13sp"/>
+
+        </LinearLayout>
+
+        <Switch
+            android:id="@+id/camera_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:track="@drawable/switch_track"
+            android:thumb="@drawable/switch_thumb"
+            android:gravity="end" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/location_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="15dp"
+        android:paddingVertical="20dp"
+        android:background="@drawable/border_purple">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Get Location"
+                style="@style/listView"
+                android:textSize="18sp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/listView"
+                android:text="Location permission for getting current location"
+                android:textSize="13sp"/>
+
+        </LinearLayout>
+
+        <Switch
+            android:id="@+id/location_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:track="@drawable/switch_track"
+            android:thumb="@drawable/switch_thumb"
+            android:gravity="end" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/code_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="15dp"
+        android:paddingVertical="20dp"
+        android:background="@drawable/border_purple">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Set Code"
+                style="@style/listView"
+                android:textSize="18sp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/listView"
+                android:text="Do not share this code with anyone"
+                android:textSize="13sp"/>
+
+        </LinearLayout>
+
+        <Switch
+            android:id="@+id/code_switch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:track="@drawable/switch_track"

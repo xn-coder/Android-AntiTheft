@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Advance Protection</string>
+    <string name="app_name">AntiTheft Protection</string>
     <string name="welcome">Welcome to Anti-Theft System</string>
     <string name="get_started">Get Started</string>
     <string name="login">Login</string>
@@ -14,7 +14,7 @@
     <string name="next">Next</string>
     <string name="sign_in">Sign In</string>
     <string name="sign_up">Sign Up</string>
-    <string name="ok">Ok</string>
+    <string name="ok">OK</string>
     <string name="registration_successfully">Registration successfully</string>
     <string name="verify_email">Verify Email</string>
     <string name="please_verify_your_email_address_by_clicking_the_link_sent_to">Please verify your email address by clicking the link sent to :</string>
