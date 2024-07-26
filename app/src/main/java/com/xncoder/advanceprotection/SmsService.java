@@ -34,8 +34,13 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 public class SmsService extends Service {
+    private ScheduledExecutorService scheduler;
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -78,7 +83,6 @@ public class SmsService extends Service {
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction("android.provider.Telephony.SMS_RECEIVED");
         registerReceiver(smsReceiver, intentFilter);
-        updateLocation();
         return START_STICKY;
     }
 
@@ -96,28 +100,4 @@ public class SmsService extends Service {
         return null;
     }
 
-    private void updateLocation() {
-        FusedLocationProviderClient fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
-        LocationRequest locationRequest = LocationRequest.create();
-        locationRequest.setInterval(600000);
-        locationRequest.setFastestInterval(300000);
-        locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
-        LocationCallback locationCallback = new LocationCallback() {
-            @Override
-            public void onLocationResult(LocationResult locationResult) {
-                for (Location location : locationResult.getLocations()) {
-                    if (location != null) {
-                        try {
-                            Geocoder geocoder = new Geocoder(getApplicationContext(), Locale.getDefault());
-                            List<Address> addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
-                            new SaveLocation(getApplicationContext()).updateLocation("https://www.google.com/maps?q=" + addresses.get(0).getLatitude() + "," + addresses.get(0).getLongitude());
-                        } catch (IOException e) {
-                            throw new RuntimeException(e);
-                        }
-                    }
-                }
-            }
-        };
-        fusedLocationProviderClient.requestLocationUpdates(locationRequest, locationCallback, null);
-    }
 }

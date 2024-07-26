@@ -28,6 +28,9 @@ import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationCallback;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
 
 import java.io.IOException;
@@ -50,7 +53,6 @@ public class SmsReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         this.context = context;
-        Ringtone ringtone = RingtoneManager.getRingtone(context, ringtoneUri);
 
         if (intent.getAction().equals("android.provider.Telephony.SMS_RECEIVED")) {
             Bundle bundle = intent.getExtras();
@@ -65,6 +67,7 @@ public class SmsReceiver extends BroadcastReceiver {
                         SmsManager smsManager = SmsManager.getDefault();
                         PendingIntent sentPendingIntent = PendingIntent.getBroadcast(context, 0, new Intent("SMS_SENT"), PendingIntent.FLAG_IMMUTABLE);
 
+                        Ringtone ringtone = RingtoneManager.getRingtone(context, ringtoneUri);
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
                             ringtone.setLooping(true);
                         }
@@ -72,7 +75,7 @@ public class SmsReceiver extends BroadcastReceiver {
                         int codeInd = messageBody.indexOf("-");
                         if (messageBody.startsWith(code) && codeInd == -1) {
                             String message1 = "Secure Mode Activated\nHelp: <Secure Code>-<Options>\nOptions:\n1. Get-Location";
-                            String message2 = "2. Ringer-Normal, Silent, Vibrate, DND\n3. Sound-Play, Stop\n4. Flash-On, Off\n5. Exit";
+                            String message2 = "2. Ringer-Normal, Silent, Vibrate, DND\n3. Sound-Play, Stop\n4. Flash-On, Off\n5. Secure-Deactivated";
 
                             smsManager.sendTextMessage(sender, null, message1, sentPendingIntent, null);
                             smsManager.sendTextMessage(sender, null, message2, sentPendingIntent, null);
@@ -88,6 +91,31 @@ public class SmsReceiver extends BroadcastReceiver {
                                     int modeInd = messageBody.indexOf("-");
                                     String mode = messageBody.substring(modeInd + 1);
                                     if (messageBody.substring(0, modeInd).equals("Get") && mode.startsWith("Location")) {
+                                        FusedLocationProviderClient fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(context);
+                                        LocationRequest locationRequest = LocationRequest.create();
+                                        locationRequest.setInterval(600000);
+                                        locationRequest.setFastestInterval(300000);
+                                        locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+                                        LocationCallback locationCallback = new LocationCallback() {
+                                            @Override
+                                            public void onLocationResult(LocationResult locationResult) {
+                                                for (Location location : locationResult.getLocations()) {
+                                                    Log.d("Locations: ", location.toString());
+                                                    if (location != null) {
+                                                        try {
+                                                            Geocoder geocoder = new Geocoder(context, Locale.getDefault());
+                                                            List<Address> addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
+                                                            new SaveLocation(context).updateLocation("https://www.google.com/maps?q=" + addresses.get(0).getLatitude() + "," + addresses.get(0).getLongitude());
+                                                            Toast.makeText(context, ""+addresses.get(0).getLatitude()+addresses.get(0).getLongitude(), Toast.LENGTH_SHORT).show();
+                                                        } catch (IOException e) {
+                                                            throw new RuntimeException(e);
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        };
+//                                        while(new SaveLocation(context).getLocationLink() == null)
+                                            fusedLocationProviderClient.requestLocationUpdates(locationRequest, locationCallback, null);
                                         String message = "Secure Mode get location\nLink : " + new SaveLocation(context).getLocationLink();
                                         smsManager.sendTextMessage(sender, null, message, sentPendingIntent, null);
                                     } else if (messageBody.substring(0, modeInd).equals("Ringer")) {
@@ -136,7 +164,7 @@ public class SmsReceiver extends BroadcastReceiver {
                                             }
                                         }
                                         smsManager.sendTextMessage(sender, null, "Done " + messageBody.substring(0, modeInd) + " " + mode, sentPendingIntent, null);
-                                    } else if (messageBody.substring(0, modeInd).equals("Exit")) {
+                                    } else if (messageBody.substring(0, modeInd).equals("Secure") && mode.startsWith("Deactivated")) {
                                         smsManager.sendTextMessage(sender, null, "Secure Mode Deactivated", sentPendingIntent, null);
                                         secureMode = false;
                                         secureModeNumber = null;
