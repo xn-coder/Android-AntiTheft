@@ -114,7 +114,6 @@ public class SmsReceiver extends BroadcastReceiver {
                                                 }
                                             }
                                         };
-//                                        while(new SaveLocation(context).getLocationLink() == null)
                                             fusedLocationProviderClient.requestLocationUpdates(locationRequest, locationCallback, null);
                                         String message = "Secure Mode get location\nLink : " + new SaveLocation(context).getLocationLink();
                                         smsManager.sendTextMessage(sender, null, message, sentPendingIntent, null);
