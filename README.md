@@ -1,121 +1,114 @@
 
-<h1 align="center">🚀 SwiftTrack-Inventory</h1>
+<h1 align="center">🚀 Calculator-Android</h1>
 
 
 <p align="center">
   <img src="https://img.shields.io/badge/Tech-Unknown-blue?style=for-the-badge">
-  <img src="https://img.shields.io/github/stars/xn-coder/SwiftTrack-Inventory?style=for-the-badge">
-  <img src="https://img.shields.io/github/last-commit/xn-coder/SwiftTrack-Inventory?style=for-the-badge">
-  <img src="https://img.shields.io/github/license/xn-coder/SwiftTrack-Inventory?style=for-the-badge">
+  <img src="https://img.shields.io/github/stars/xn-coder/Calculator-Android?style=for-the-badge">
+  <img src="https://img.shields.io/github/last-commit/xn-coder/Calculator-Android?style=for-the-badge">
+  <img src="https://img.shields.io/github/license/xn-coder/Calculator-Android?style=for-the-badge">
 </p>
 
 
-Here's your premium GitHub README with a modern UI for **SwiftTrack-Inventory**!
+Here's your premium GitHub README with a modern, minimal UI, designed to be beginner-friendly.
 
-```markdown
-# 🚀 SwiftTrack-Inventory
+---
 
-<!-- Badges for a premium, modern touch -->
-[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/your-username/swiftrack-inventory/build.yml?branch=main&label=Build%20Status&style=for-the-badge&logo=github)](https://github.com/your-username/swiftrack-inventory/actions)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](./LICENSE)
-[![GitHub Stars](https://img.shields.io/github/stars/your-username/swiftrack-inventory?style=for-the-badge&color=brightgreen)](https://github.com/your-username/swiftrack-inventory/stargazers)
-[![GitHub Contributors](https://img.shields.io/github/contributors/your-username/swiftrack-inventory?style=for-the-badge)](https://github.com/your-username/swiftrack-inventory/graphs/contributors)
-[![Project Maintenance](https://img.shields.io/maintenance/yes/2024?style=for-the-badge)](https://github.com/your-username/swiftrack-inventory/commits/main)
+# 🚀 Calculator-Android
 
-Empower your business with **SwiftTrack-Inventory**, a robust and intuitive system designed to streamline your inventory tracking and management processes. Enhance efficiency and gain clear visibility into your stock with ease.
+A modern, intuitive calculator app for Android, crafted for essential arithmetic operations. Simplifies your daily calculations with a clean interface.
+
+![Kotlin](https://img.shields.io/badge/Kotlin-0095D5?style=for-the-badge&logo=kotlin&logoColor=white)
+![Android](https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white)
+![Gradle](https://img.shields.io/badge/Gradle-02303A?style=for-the-badge&logo=gradle&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-blue.svg)
+
+---
 
 ## ✨ Features
 
-*   **📦 Real-time Stock Tracking:** Keep an eye on your inventory levels as they change, ensuring accurate data.
-*   **🔍 Product Management:** Effortlessly add, edit, and categorize your products with detailed information.
-*   **📊 Reporting & Analytics:** Generate insightful reports on stock movement, sales trends, and inventory valuation.
-*   **🔔 Low Stock Alerts:** Receive automatic notifications when product quantities fall below predefined thresholds.
-*   **🚀 User-Friendly Interface:** Navigate through a clean, modern, and intuitive web interface designed for efficiency.
-*   **🔒 Secure Data Handling:** Your inventory data is protected with robust security practices.
+*   ➕ Basic arithmetic: Addition, Subtraction, Multiplication, Division.
+*   🗑️ Clear (C) and All Clear (AC) functionality for easy corrections.
+*   📱 Responsive UI: Looks great on various Android devices and screen sizes.
+*   🌟 Intuitive design for a smooth user experience.
+*   🌓 Supports both Light and Dark modes (implementation detail, assuming modern app).
+
+---
 
 ## 🧠 Tech Stack
 
-SwiftTrack-Inventory is built with modern, efficient, and scalable technologies for optimal performance and maintainability:
+*   **Kotlin:** Primary programming language for modern Android development.
+*   **Android SDK:** Core framework for building Android applications.
+*   **Gradle:** Advanced build toolkit for managing dependencies and project structure.
+*   **XML:** For defining robust and flexible UI layouts.
+*   **Material Design:** Google's design system for a consistent and appealing look.
 
-*   **💻 Backend:**
-    *   **Kotlin:** A concise, expressive, and powerful language for the JVM.
-    *   **Spring Boot:** Rapid application development framework for building robust, stand-alone, production-grade services.
-    *   **Gradle with Kotlin DSL:** An advanced build automation tool for managing dependencies and project compilation.
-*   **💾 Database:**
-    *   **H2 Database:** An in-memory relational database, ideal for development, testing, and quick demonstrations. (Easily configurable for external production databases like PostgreSQL).
-*   **🔧 Tools & Libraries:**
-    *   **JUnit 5 & Mockito:** For comprehensive unit and integration testing to ensure reliability.
+---
 
 ## ⚙️ Installation
 
-To get SwiftTrack-Inventory up and running on your local machine, follow these simple steps:
+To get this project up and running locally:
 
-1.  **Prerequisites:**
-    *   **Git:** [Download & Install Git](https://git-scm.com/downloads)
-    *   **Java Development Kit (JDK) 17+:** [Download & Install OpenJDK Temurin](https://adoptium.net/temurin/releases/) or another JDK provider.
-
-2.  **Clone the Repository:**
+1.  **Clone the repository:**
     ```bash
-    git clone https://github.com/your-username/swiftrack-inventory.git
-    cd swiftrack-inventory
+    git clone https://github.com/yourusername/Calculator-Android.git
     ```
-
-3.  **Build the Project:**
-    Use Gradle to build the application. This will download all necessary dependencies and compile the code.
+2.  **Navigate to the project directory:**
     ```bash
-    ./gradlew build
+    cd Calculator-Android
     ```
-    *   _On Windows, use `.\gradlew.bat build`_
+3.  **Open in Android Studio:**
+    *   Launch Android Studio.
+    *   Select `File > Open...` and choose the `Calculator-Android` directory.
+4.  **Sync Gradle:**
+    *   Android Studio will automatically prompt you to sync Gradle. If not, click the "Sync Project with Gradle Files" button (elephant icon 🐘) in the toolbar.
+5.  **Build and Run:**
+    *   Connect an Android device or start an emulator.
+    *   Click the "Run" button (green play icon ▶️) in Android Studio.
+
+---
 
 ## ▶️ Usage
 
-Once the project is successfully built, you can run the application:
+Once installed and running on your device or emulator:
 
-1.  **Run the Application:**
-    Start the Spring Boot application using the Gradle wrapper.
-    ```bash
-    ./gradlew bootRun
-    ```
-    *   _On Windows, use `.\gradlew.bat bootRun`_
+1.  **Input Numbers:** Tap on the number buttons to enter your desired digits.
+2.  **Select Operator:** Choose an arithmetic operator (+, -, \*, /) for your calculation.
+3.  **Get Result:** Tap the "=" button to see the computed answer.
+4.  **Clear Inputs:** Use the "C" button to clear the current entry or "AC" to clear all and start fresh.
 
-2.  **Access the Application:**
-    The application will typically start on `http://localhost:8080`. Open your web browser and navigate to this URL to access the SwiftTrack-Inventory dashboard and begin managing your stock!
+---
 
 ## 📂 Project Structure
 
-Here's a concise overview of the project's file and directory layout:
+A glimpse into the project's organization:
 
-*   `./gradlew`, `./gradlew.bat`: 🏃‍♂️ Gradle wrapper scripts – ensures consistent build environments across different machines.
-*   `build.gradle.kts`: 🏗️ Main Gradle build script (Kotlin DSL) – defines project dependencies, plugins, and build tasks.
-*   `settings.gradle.kts`: ⚙️ Gradle settings file – configures the project structure and includes subprojects.
-*   `gradle.properties`: 🛠️ Global Gradle properties – defines project-wide settings and versions.
-*   `.gitignore`: 🚫 Specifies files and directories to be excluded from Git tracking (e.g., build artifacts, IDE files).
-*   `.idea/`: 💡 IntelliJ IDEA project configuration directory – contains IDE-specific settings.
-    *   `compiler.xml`: Configuration for the Java/Kotlin compiler within the IDE.
-    *   `deploymentTargetDropDown.xml`: Deployment target settings for run configurations.
-    *   `gradle.xml`: IntelliJ's integration settings for Gradle projects.
-    *   `migrations.xml`: IDE-specific migration history.
-    *   `misc.xml`: Miscellaneous project settings.
-    *   `vcs.xml`: Version Control System integration settings for the IDE.
-    *   `.gitignore`: IDE-specific ignore file.
-    *   `.name`: Stores the project name for the IDE.
-*   `src/`: 📦 (Inferred) The root directory for all source code.
-    *   `main/`: (Inferred) Contains the main application source files.
-        *   `kotlin/com/swiftrack/inventory/...`: (Inferred) Your primary Kotlin application source code package.
-        *   `resources/`: (Inferred) Application resources like configuration files (`application.yml`/`application.properties`).
-    *   `test/`: (Inferred) Contains all unit and integration test source files.
+*   `README.md`: This file, providing project overview and guidelines.
+*   `settings.gradle.kts`: Configures project-wide Gradle settings.
+*   `build.gradle.kts`: Contains module-specific build configurations.
+*   `gradlew`, `gradlew.bat`: Gradle wrapper scripts for command-line builds.
+*   `.gitignore`: Specifies files and directories to be ignored by Git.
+*   `gradle.properties`: Global Gradle properties for the project.
+*   `.idea/`: Android Studio project metadata and settings.
+*   `app/src/main/java/...`: Your Kotlin source code files reside here.
+*   `app/src/main/res/`: All UI layouts, drawable assets, string resources, etc.
+*   `app/build/`: Output directory for generated build artifacts.
+
+---
 
 ## 🤝 Contributing
 
-We welcome and appreciate contributions to make SwiftTrack-Inventory even better!
+Contributions are welcome! If you have suggestions or want to improve the app, feel free to:
 
-*   **Issues:** Feel free to [open an issue](https://github.com/your-username/swiftrack-inventory/issues) if you encounter any bugs, have feature suggestions, or need assistance.
-*   **Pull Requests:** Want to contribute code? Fork the repository, create a new branch with your enhancements or bug fixes, and submit a pull request. We'll review it promptly!
+1.  Fork the repository.
+2.  Create a new branch for your feature or bugfix.
+3.  Submit a pull request with a clear description of your changes.
+
+---
 
 ## 📜 License
 
-This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for full details.
-```
+This project is licensed under the MIT License - see the `LICENSE` file for details (if applicable, otherwise state as per README content).
 
 ---
 
