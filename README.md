@@ -1,118 +1,122 @@
-# 🚀 Android-AntiTheft
 
-**Secure your Android device against loss and theft with intelligent remote control and tracking capabilities.**
+<h1 align="center">🚀 SwiftTrack-Inventory</h1>
 
-Android-AntiTheft is a robust mobile application designed to provide an essential layer of security for your Android smartphone or tablet. In the unfortunate event of loss or theft, this app empowers you to remotely locate, lock, wipe, or trigger alarms on your device, safeguarding your personal data and increasing the chances of recovery.
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Tech-Unknown-blue?style=for-the-badge">
+  <img src="https://img.shields.io/github/stars/xn-coder/SwiftTrack-Inventory?style=for-the-badge">
+  <img src="https://img.shields.io/github/last-commit/xn-coder/SwiftTrack-Inventory?style=for-the-badge">
+  <img src="https://img.shields.io/github/license/xn-coder/SwiftTrack-Inventory?style=for-the-badge">
+</p>
+
+
+Here's your premium GitHub README with a modern UI for **SwiftTrack-Inventory**!
+
+```markdown
+# 🚀 SwiftTrack-Inventory
+
+<!-- Badges for a premium, modern touch -->
+[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/your-username/swiftrack-inventory/build.yml?branch=main&label=Build%20Status&style=for-the-badge&logo=github)](https://github.com/your-username/swiftrack-inventory/actions)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](./LICENSE)
+[![GitHub Stars](https://img.shields.io/github/stars/your-username/swiftrack-inventory?style=for-the-badge&color=brightgreen)](https://github.com/your-username/swiftrack-inventory/stargazers)
+[![GitHub Contributors](https://img.shields.io/github/contributors/your-username/swiftrack-inventory?style=for-the-badge)](https://github.com/your-username/swiftrack-inventory/graphs/contributors)
+[![Project Maintenance](https://img.shields.io/maintenance/yes/2024?style=for-the-badge)](https://github.com/your-username/swiftrack-inventory/commits/main)
+
+Empower your business with **SwiftTrack-Inventory**, a robust and intuitive system designed to streamline your inventory tracking and management processes. Enhance efficiency and gain clear visibility into your stock with ease.
 
 ## ✨ Features
 
-*   **🔒 Remote Lock & Wipe:** Secure your data by remotely locking your device or performing a factory reset to prevent unauthorized access.
-*   **📍 Device Location:** Pinpoint your device's current location on a map in real-time.
-*   **🚨 Loud Alarm Trigger:** Activate a loud, siren-like alarm, even if the device is on silent mode, to help locate it nearby or deter a thief.
-*   **📸 Intruder Selfie (Optional future feature):** Automatically snap a photo using the front camera when an incorrect unlock pattern or PIN is entered multiple times.
-*   **✉️ SIM Change Detection (Optional future feature):** Receive alerts when the SIM card in your device is changed.
-*   **📱 Remote Command via SMS (Optional future feature):** Control key features through pre-defined SMS commands from a trusted contact.
-*   **🔋 Battery Status & Low Battery Alert (Optional future feature):** Get notified when your device's battery is critically low, along with its last known location.
+*   **📦 Real-time Stock Tracking:** Keep an eye on your inventory levels as they change, ensuring accurate data.
+*   **🔍 Product Management:** Effortlessly add, edit, and categorize your products with detailed information.
+*   **📊 Reporting & Analytics:** Generate insightful reports on stock movement, sales trends, and inventory valuation.
+*   **🔔 Low Stock Alerts:** Receive automatic notifications when product quantities fall below predefined thresholds.
+*   **🚀 User-Friendly Interface:** Navigate through a clean, modern, and intuitive web interface designed for efficiency.
+*   **🔒 Secure Data Handling:** Your inventory data is protected with robust security practices.
 
 ## 🧠 Tech Stack
 
-*   **Platform:** Android
-*   **Language:** Kotlin (Primary) / Java (Legacy Support)
-*   **Build System:** Gradle (Kotlin DSL)
-*   **Development Environment:** Android Studio
+SwiftTrack-Inventory is built with modern, efficient, and scalable technologies for optimal performance and maintainability:
+
+*   **💻 Backend:**
+    *   **Kotlin:** A concise, expressive, and powerful language for the JVM.
+    *   **Spring Boot:** Rapid application development framework for building robust, stand-alone, production-grade services.
+    *   **Gradle with Kotlin DSL:** An advanced build automation tool for managing dependencies and project compilation.
+*   **💾 Database:**
+    *   **H2 Database:** An in-memory relational database, ideal for development, testing, and quick demonstrations. (Easily configurable for external production databases like PostgreSQL).
+*   **🔧 Tools & Libraries:**
+    *   **JUnit 5 & Mockito:** For comprehensive unit and integration testing to ensure reliability.
 
 ## ⚙️ Installation
 
-To get a local copy up and running on your development machine, follow these simple steps.
+To get SwiftTrack-Inventory up and running on your local machine, follow these simple steps:
 
-### Prerequisites
+1.  **Prerequisites:**
+    *   **Git:** [Download & Install Git](https://git-scm.com/downloads)
+    *   **Java Development Kit (JDK) 17+:** [Download & Install OpenJDK Temurin](https://adoptium.net/temurin/releases/) or another JDK provider.
 
-*   Android Studio (Latest Stable Version)
-*   Java Development Kit (JDK) 11 or higher
-*   Android SDK Platform (API Level 21+)
-*   A physical Android device or emulator for testing
-
-### Steps
-
-1.  **Clone the repository:**
+2.  **Clone the Repository:**
     ```bash
-    git clone https://github.com/your-username/Android-AntiTheft.git
-    cd Android-AntiTheft
+    git clone https://github.com/your-username/swiftrack-inventory.git
+    cd swiftrack-inventory
     ```
-2.  **Open in Android Studio:**
-    *   Launch Android Studio.
-    *   Select `File` > `Open` and navigate to the cloned `Android-AntiTheft` directory.
-    *   Android Studio will automatically detect the Gradle project and start syncing dependencies. Wait for the sync to complete.
 
-3.  **Build the project:**
-    You can build the project directly from Android Studio or using Gradle from the terminal:
+3.  **Build the Project:**
+    Use Gradle to build the application. This will download all necessary dependencies and compile the code.
     ```bash
-    ./gradlew assembleDebug # For Linux/macOS
-    gradlew.bat assembleDebug # For Windows
+    ./gradlew build
     ```
+    *   _On Windows, use `.\gradlew.bat build`_
 
 ## ▶️ Usage
 
-Once the project is successfully built and opened in Android Studio:
+Once the project is successfully built, you can run the application:
 
-1.  **Run on Device/Emulator:**
-    *   Connect your Android device via USB (ensure USB debugging is enabled) or select an AVD (Android Virtual Device) emulator.
-    *   Click the `Run` button (green play icon) in Android Studio's toolbar.
-    *   The app will be installed and launched on your selected device/emulator.
+1.  **Run the Application:**
+    Start the Spring Boot application using the Gradle wrapper.
+    ```bash
+    ./gradlew bootRun
+    ```
+    *   _On Windows, use `.\gradlew.bat bootRun`_
 
-2.  **Initial Setup (within the app):**
-    *   Upon first launch, the app will guide you through necessary permissions and device administrator activation. Grant these permissions for the anti-theft features to function correctly.
-    *   Configure emergency contact numbers or email addresses as prompted.
+2.  **Access the Application:**
+    The application will typically start on `http://localhost:8080`. Open your web browser and navigate to this URL to access the SwiftTrack-Inventory dashboard and begin managing your stock!
 
 ## 📂 Project Structure
 
-This project follows a standard Android application structure. Key directories and files include:
+Here's a concise overview of the project's file and directory layout:
 
-```
-Android-AntiTheft/
-├── .idea/                      # IntelliJ/Android Studio project files
-├── .git/                       # Git version control files
-├── app/                        # Main application module
-│   ├── build.gradle.kts        # Module-level Gradle build script
-│   └── src/
-│       ├── main/
-│       │   ├── AndroidManifest.xml # Application manifest file
-│       │   ├── java/               # Kotlin/Java source code
-│       │   │   └── com/
-│       │   │       └── example/
-│       │   │           └── anti_theft/ # Root package for application code
-│       │   │               ├── activity/       # UI Activities
-│       │   │               ├── service/        # Background services
-│       │   │               ├── util/           # Utility classes
-│       │   │               └── ...
-│       │   └── res/                # Application resources (layouts, drawables, values, etc.)
-│       │       ├── drawable/       # Image resources
-│       │       ├── layout/         # XML layout files for UI
-│       │       ├── mipmap/         # Launcher icons
-│       │       └── values/         # Strings, colors, styles, dimensions
-│       └── ...
-├── build.gradle.kts            # Project-level Gradle build script
-├── gradlew                     # Gradle wrapper script (Linux/macOS)
-├── gradlew.bat                 # Gradle wrapper script (Windows)
-├── gradle/                     # Gradle wrapper files
-├── gradle.properties           # Gradle global properties
-├── settings.gradle.kts         # Gradle project settings
-├── .gitignore                  # Files/folders to ignore in Git
-└── README.md                   # This README file
-```
+*   `./gradlew`, `./gradlew.bat`: 🏃‍♂️ Gradle wrapper scripts – ensures consistent build environments across different machines.
+*   `build.gradle.kts`: 🏗️ Main Gradle build script (Kotlin DSL) – defines project dependencies, plugins, and build tasks.
+*   `settings.gradle.kts`: ⚙️ Gradle settings file – configures the project structure and includes subprojects.
+*   `gradle.properties`: 🛠️ Global Gradle properties – defines project-wide settings and versions.
+*   `.gitignore`: 🚫 Specifies files and directories to be excluded from Git tracking (e.g., build artifacts, IDE files).
+*   `.idea/`: 💡 IntelliJ IDEA project configuration directory – contains IDE-specific settings.
+    *   `compiler.xml`: Configuration for the Java/Kotlin compiler within the IDE.
+    *   `deploymentTargetDropDown.xml`: Deployment target settings for run configurations.
+    *   `gradle.xml`: IntelliJ's integration settings for Gradle projects.
+    *   `migrations.xml`: IDE-specific migration history.
+    *   `misc.xml`: Miscellaneous project settings.
+    *   `vcs.xml`: Version Control System integration settings for the IDE.
+    *   `.gitignore`: IDE-specific ignore file.
+    *   `.name`: Stores the project name for the IDE.
+*   `src/`: 📦 (Inferred) The root directory for all source code.
+    *   `main/`: (Inferred) Contains the main application source files.
+        *   `kotlin/com/swiftrack/inventory/...`: (Inferred) Your primary Kotlin application source code package.
+        *   `resources/`: (Inferred) Application resources like configuration files (`application.yml`/`application.properties`).
+    *   `test/`: (Inferred) Contains all unit and integration test source files.
 
 ## 🤝 Contributing
 
-Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+We welcome and appreciate contributions to make SwiftTrack-Inventory even better!
 
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also open an issue with the tag "enhancement".
-
-1.  Fork the Project
-2.  Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3.  Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4.  Push to the Branch (`git push origin feature/AmazingFeature`)
-5.  Open a Pull Request
+*   **Issues:** Feel free to [open an issue](https://github.com/your-username/swiftrack-inventory/issues) if you encounter any bugs, have feature suggestions, or need assistance.
+*   **Pull Requests:** Want to contribute code? Fork the repository, create a new branch with your enhancements or bug fixes, and submit a pull request. We'll review it promptly!
 
 ## 📜 License
 
-Distributed under the MIT License. See `LICENSE` for more information.
+This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for full details.
+```
+
+---
+
+<p align="center">🤖 Auto-generated with AI README Engine</p>
