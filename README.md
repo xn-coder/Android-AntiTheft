@@ -1,114 +1,119 @@
 
-<h1 align="center">🚀 Calculator-Android</h1>
+<h1 align="center">🚀 Android-AntiTheft</h1>
 
 
 <p align="center">
   <img src="https://img.shields.io/badge/Tech-Unknown-blue?style=for-the-badge">
-  <img src="https://img.shields.io/github/stars/xn-coder/Calculator-Android?style=for-the-badge">
-  <img src="https://img.shields.io/github/last-commit/xn-coder/Calculator-Android?style=for-the-badge">
-  <img src="https://img.shields.io/github/license/xn-coder/Calculator-Android?style=for-the-badge">
+  <img src="https://img.shields.io/github/stars/xn-coder/Android-AntiTheft?style=for-the-badge">
+  <img src="https://img.shields.io/github/last-commit/xn-coder/Android-AntiTheft?style=for-the-badge">
+  <img src="https://img.shields.io/github/license/xn-coder/Android-AntiTheft?style=for-the-badge">
 </p>
 
 
-Here's your premium GitHub README with a modern, minimal UI, designed to be beginner-friendly.
+This is a premium, modern, and minimal GitHub README for your `Android-AntiTheft` project.
 
 ---
 
-# 🚀 Calculator-Android
+<p align="center">
+  <img src="https://img.shields.io/badge/Kotlin-0096C7?style=for-the-badge&logo=kotlin&logoColor=white" alt="Kotlin Badge">
+  <img src="https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white" alt="Android Badge">
+  <img src="https://img.shields.io/badge/Gradle-02303A?style=for-the-badge&logo=gradle&logoColor=white" alt="Gradle Badge">
+  <img src="https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge" alt="License Badge">
+</p>
 
-A modern, intuitive calculator app for Android, crafted for essential arithmetic operations. Simplifies your daily calculations with a clean interface.
-
-![Kotlin](https://img.shields.io/badge/Kotlin-0095D5?style=for-the-badge&logo=kotlin&logoColor=white)
-![Android](https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white)
-![Gradle](https://img.shields.io/badge/Gradle-02303A?style=for-the-badge&logo=gradle&logoColor=white)
-![License](https://img.shields.io/badge/License-MIT-blue.svg)
+<p align="center">
+  <a href="#🚀-android-antitheft">Home</a> •
+  <a href="#✨-features">Features</a> •
+  <a href="#🧠-tech-stack">Tech Stack</a> •
+  <a href="#⚙️-installation">Installation</a> •
+  <a href="#▶️-usage">Usage</a> •
+  <a href="#📂-project-structure">Structure</a> •
+  <a href="#🤝-contributing">Contributing</a> •
+  <a href="#📜-license">License</a>
+</p>
 
 ---
+
+<p align="center">
+  <h1>🚀 Android-AntiTheft</h1>
+</p>
+
+Protect your Android device from loss or theft with this robust anti-theft application. Gain peace of mind knowing your valuable data and device are secure.
 
 ## ✨ Features
 
-*   ➕ Basic arithmetic: Addition, Subtraction, Multiplication, Division.
-*   🗑️ Clear (C) and All Clear (AC) functionality for easy corrections.
-*   📱 Responsive UI: Looks great on various Android devices and screen sizes.
-*   🌟 Intuitive design for a smooth user experience.
-*   🌓 Supports both Light and Dark modes (implementation detail, assuming modern app).
-
----
+*   📍 **Remote Location Tracking:** Pinpoint your device's exact location from anywhere, anytime.
+*   🚨 **Loud Siren Trigger:** Activate a deafening alarm remotely to deter thieves or find a misplaced phone, even if it's on silent.
+*   🔒 **Remote Device Lock & Wipe:** Lock your device or erase sensitive data to prevent unauthorized access after theft.
+*   🕵️‍♂️ **SIM Change Alert:** Get notified immediately if your device's SIM card is swapped, indicating potential unauthorized use.
 
 ## 🧠 Tech Stack
 
-*   **Kotlin:** Primary programming language for modern Android development.
-*   **Android SDK:** Core framework for building Android applications.
-*   **Gradle:** Advanced build toolkit for managing dependencies and project structure.
-*   **XML:** For defining robust and flexible UI layouts.
-*   **Material Design:** Google's design system for a consistent and appealing look.
+This project is built using modern Android development practices.
 
----
+*   **Android:** The primary platform for the application.
+*   **Kotlin:** The preferred programming language for Android development.
+*   **Gradle:** The build automation tool used to manage dependencies and build processes.
 
 ## ⚙️ Installation
 
-To get this project up and running locally:
+Getting started with Android-AntiTheft is straightforward.
 
 1.  **Clone the repository:**
     ```bash
-    git clone https://github.com/yourusername/Calculator-Android.git
+    git clone https://github.com/your-username/Android-AntiTheft.git
     ```
 2.  **Navigate to the project directory:**
     ```bash
-    cd Calculator-Android
+    cd Android-AntiTheft
     ```
 3.  **Open in Android Studio:**
     *   Launch Android Studio.
-    *   Select `File > Open...` and choose the `Calculator-Android` directory.
-4.  **Sync Gradle:**
-    *   Android Studio will automatically prompt you to sync Gradle. If not, click the "Sync Project with Gradle Files" button (elephant icon 🐘) in the toolbar.
-5.  **Build and Run:**
-    *   Connect an Android device or start an emulator.
-    *   Click the "Run" button (green play icon ▶️) in Android Studio.
-
----
+    *   Select `File > Open...` and choose the `Android-AntiTheft` project directory.
+    *   Android Studio will automatically sync the Gradle project. Please wait for this process to complete.
 
 ## ▶️ Usage
 
-Once installed and running on your device or emulator:
+Once the project is open in Android Studio and Gradle has synced:
 
-1.  **Input Numbers:** Tap on the number buttons to enter your desired digits.
-2.  **Select Operator:** Choose an arithmetic operator (+, -, \*, /) for your calculation.
-3.  **Get Result:** Tap the "=" button to see the computed answer.
-4.  **Clear Inputs:** Use the "C" button to clear the current entry or "AC" to clear all and start fresh.
-
----
+1.  **Select a device:** Choose an Android Emulator or a physical device connected to your computer.
+2.  **Run the application:** Click the `Run` button (green play icon ▶️) in the toolbar.
+3.  **Configure & Activate:** Once the app launches on your device, follow the in-app instructions to grant necessary permissions and activate the anti-theft features.
 
 ## 📂 Project Structure
 
-A glimpse into the project's organization:
+A quick overview of the key files and directories in the project:
 
-*   `README.md`: This file, providing project overview and guidelines.
-*   `settings.gradle.kts`: Configures project-wide Gradle settings.
-*   `build.gradle.kts`: Contains module-specific build configurations.
-*   `gradlew`, `gradlew.bat`: Gradle wrapper scripts for command-line builds.
-*   `.gitignore`: Specifies files and directories to be ignored by Git.
-*   `gradle.properties`: Global Gradle properties for the project.
-*   `.idea/`: Android Studio project metadata and settings.
-*   `app/src/main/java/...`: Your Kotlin source code files reside here.
-*   `app/src/main/res/`: All UI layouts, drawable assets, string resources, etc.
-*   `app/build/`: Output directory for generated build artifacts.
-
----
+*   `settings.gradle.kts`: Configures global project settings for Gradle.
+*   `gradlew` (Unix) / `gradlew.bat` (Windows): Scripts to execute Gradle commands without manual installation.
+*   `build.gradle.kts`: Defines project dependencies, build configurations, and tasks.
+*   `.gitignore`: Specifies files and directories that Git should ignore.
+*   `gradle.properties`: Stores project-wide configuration properties for Gradle.
+*   `.idea/`: Directory containing IntelliJ IDEA/Android Studio project configuration files.
+    *   `misc.xml`: Various project-specific settings.
+    *   `vcs.xml`: Version Control System settings.
+    *   `migrations.xml`: IDE migration history.
+    *   `gradle.xml`: Gradle specific IDE settings.
+    *   `compiler.xml`: Compiler settings.
+    *   `deploymentTargetDropDown.xml`: Settings for deployment targets dropdown.
+    *   `.gitignore`: IDE-specific ignore rules.
+    *   `.name`: Stores the project name for the IDE.
 
 ## 🤝 Contributing
 
-Contributions are welcome! If you have suggestions or want to improve the app, feel free to:
+We welcome contributions! If you have suggestions or want to improve the app:
 
 1.  Fork the repository.
-2.  Create a new branch for your feature or bugfix.
-3.  Submit a pull request with a clear description of your changes.
-
----
+2.  Create a new branch (`git checkout -b feature/AmazingFeature`).
+3.  Commit your changes (`git commit -m 'Add some AmazingFeature'`).
+4.  Push to the branch (`git push origin feature/AmazingFeature`).
+5.  Open a Pull Request.
 
 ## 📜 License
 
-This project is licensed under the MIT License - see the `LICENSE` file for details (if applicable, otherwise state as per README content).
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
 
 ---
 
