@@ -10,82 +10,82 @@
 </p>
 
 
-Here's a premium GitHub README for your `Android-AntiTheft` project, crafted with a modern, clean, and beginner-friendly UI:
-
----
-
+```markdown
 # 🚀 Android-AntiTheft
 
-Secure your Android device against theft and loss with this robust application. Track, lock, and protect your personal data with ease, giving you peace of mind.
+A robust Android application designed to protect your device from theft and unauthorized access. Keep your phone safe with advanced security features and peace of mind.
 
 ## ✨ Features
-*   📍 **Remote Location Tracking**: Instantly pinpoint your device's exact location on a map.
-*   🔒 **Remote Device Lock**: Secure your phone remotely to prevent unauthorized access.
-*   🚨 **Loud Alarm Trigger**: Activate a piercing alarm, even on silent mode, to help locate your device or deter thieves.
-*   🗑️ **Remote Data Wipe (Planned)**: Erase sensitive personal data from your device for ultimate privacy protection.
-*   📸 **Intruder Selfie (Planned)**: Capture a photo of anyone attempting to unlock your device with an incorrect password.
+
+*   🔒 **Remote Lock & Wipe:** Secure your device or erase sensitive data remotely if lost or stolen.
+*   📍 **GPS Tracking:** Pinpoint your device's real-time location on a map.
+*   🚨 **Loud Siren Activation:** Trigger an ear-splitting alarm to help locate your device or deter thieves.
+*   📸 **Intruder Selfie:** Automatically capture a photo of anyone attempting unauthorized access to your device.
+*   🛡️ **Device Admin Protection:** Prevents the app from being uninstalled without proper authorization.
+*   📱 **SIM Change Detection:** Receive alerts if the SIM card in your device is swapped.
 
 ## 🧠 Tech Stack
-<p>
-  <img src="https://img.shields.io/badge/Kotlin-0095D5?style=for-the-badge&logo=kotlin&logoColor=white" alt="Kotlin Badge"/>
-  <img src="https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white" alt="Android Badge"/>
-  <img src="https://img.shields.io/badge/Gradle-02303A?style=for-the-badge&logo=gradle&logoColor=white" alt="Gradle Badge"/>
-</p>
 
-This project is built using:
-*   **Kotlin**: The preferred modern language for Android development.
-*   **Android SDK**: Essential tools and APIs for building Android applications.
-*   **Gradle Kotlin DSL**: A powerful and flexible build system for project management.
+This project leverages modern Android development technologies:
+
+*   **Kotlin:** The primary programming language for building robust Android applications.
+*   **Android SDK:** The core framework and tools for developing on the Android platform.
+*   **Gradle:** The powerful build automation system used to manage dependencies and build processes.
 
 ## ⚙️ Installation
-Getting started with `Android-AntiTheft` is quick and easy!
 
-1.  **Clone the repository**:
+Getting Android-AntiTheft up and running is straightforward:
+
+1.  **Clone the repository:**
     ```bash
     git clone https://github.com/your-username/Android-AntiTheft.git
     cd Android-AntiTheft
     ```
-
-2.  **Open in Android Studio**:
-    *   Launch Android Studio.
-    *   Select `Open an existing Android Studio project`.
-    *   Navigate to the `Android-AntiTheft` directory and click `Open`.
-
-3.  **Sync Gradle**:
-    *   Android Studio will automatically prompt you to sync Gradle. If not, click `File` > `Sync Project with Gradle Files`.
+2.  **Open in Android Studio:**
+    Launch Android Studio and select "Open an existing Android Studio project," then navigate to the cloned `Android-AntiTheft` directory.
+3.  **Sync Gradle:**
+    Android Studio will automatically prompt you to sync Gradle. If not, click the "Sync Project with Gradle Files" button in the toolbar.
+4.  **Build & Run:**
+    Connect an Android device or start an emulator. Click the "Run" button (▶️) in Android Studio to install and launch the app.
 
 ## ▶️ Usage
-Once installed, run the app on your device or emulator:
 
-1.  **Build the Project**:
-    *   In Android Studio, click `Build` > `Make Project` or use the hammer icon in the toolbar.
+After installation, configure the app to protect your device:
 
-2.  **Run on Device/Emulator**:
-    *   Connect an Android device via USB or start an AVD (Android Virtual Device).
-    *   Click the `Run` icon (green play button) in Android Studio's toolbar.
-    *   Select your desired target device/emulator and click `OK`.
-    *   The app will install and launch automatically on your selected device.
+1.  **Grant Permissions:** The app will request necessary permissions (e.g., Device Administrator, Location, Camera). Grant all required permissions for full functionality.
+2.  **Set Up Security PIN:** Create a secure PIN or password for remote commands and app access.
+3.  **Define Emergency Contacts:** Add trusted contacts who can receive alerts or send remote commands to your device.
+4.  **Test Features:** It's recommended to test the anti-theft features (like siren and remote lock) in a safe environment to ensure they work as expected.
 
 ## 📂 Project Structure
-Here's an overview of the key files and directories in this project:
 
-*   `README.md`: The file you're currently reading! Provides project information.
-*   `settings.gradle.kts`: Configures project-wide settings and module declarations.
-*   `build.gradle.kts`: Defines build configurations, dependencies, and plugins for the project.
-*   `gradlew`, `gradlew.bat`: Gradle Wrapper scripts for consistent command-line builds across different environments.
-*   `gradle.properties`: Contains project-wide Gradle properties and settings.
+The project's file and directory layout is organized for clarity and maintainability:
+
+*   `README.md`: This very file!
+*   `settings.gradle.kts`: Gradle build configuration for project settings.
+*   `gradlew.bat`: Windows script for executing Gradle commands.
+*   `build.gradle.kts`: Main Gradle build file for the project.
 *   `.gitignore`: Specifies files and directories that Git should ignore.
-*   `.idea/`: Android Studio's project-specific metadata and configuration files.
-    *   `misc.xml`, `vcs.xml`, `migrations.xml`, `gradle.xml`, `compiler.xml`, `deploymentTargetDropDown.xml`, `.gitignore`, `.name`: Various IDE configuration files.
-*   `app/` (standard Android directory): Contains the core application source code, resources, and module-specific build files.
+*   `gradlew`: Unix/macOS script for executing Gradle commands.
+*   `gradle.properties`: Configuration properties for Gradle builds.
+*   `.idea/`: Directory containing Android Studio project metadata and settings.
+    *   `misc.xml`
+    *   `vcs.xml`
+    *   `migrations.xml`
+    *   `gradle.xml`
+    *   `compiler.xml`
+    *   `deploymentTargetDropDown.xml`
+    *   `.gitignore`
+    *   `.name`
 
 ## 🤝 Contributing
-Contributions are absolutely welcome! If you have suggestions, bug reports, or want to enhance the app, please feel free to open an issue or submit a pull request. We appreciate your help in making `Android-AntiTheft` even better!
+
+We welcome contributions! If you have suggestions, find bugs, or want to add new features, please open an issue or submit a pull request. Every contribution helps make this project better!
 
 ## 📜 License
-This project is distributed under the MIT License. See the `LICENSE` file for more information.
 
----
+This project is licensed under the MIT License.
+```
 
 ---
 
