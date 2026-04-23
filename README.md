@@ -10,121 +10,100 @@
 </p>
 
 
-Here's a premium GitHub README for your `Android-AntiTheft` project, designed with a clean, modern UI and beginner-friendliness in mind!
+Here's a premium GitHub README for your `Android-AntiTheft` project with a modern, minimal UI:
 
 ---
 
-```markdown
-<div align="center">
-  <img src="https://raw.githubusercontent.com/yurymokry/android-anti-theft-app/master/art/banner.png" alt="Android-AntiTheft Banner" width="600"/>
-  <br>
-  <h1>🚀 Android-AntiTheft</h1>
-  <p>An open-source Android application designed to help locate and secure your lost or stolen device. Protect your phone with powerful anti-theft functionalities! 🛡️</p>
+<p align="center">
+  <img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License">
+  <img src="https://img.shields.io/github/stars/your-username/Android-AntiTheft?style=flat&color=yellow" alt="Stars">
+  <img src="https://img.shields.io/github/forks/your-username/Android-AntiTheft?style=flat&color=cyan" alt="Forks">
+</p>
 
-  <p>
-    <a href="https://github.com/your-username/Android-AntiTheft/stargazers">
-      <img src="https://img.shields.io/github/stars/your-username/Android-AntiTheft?style=flat-square&colorA=1F242B&colorB=8B5CF6&label=Stars&logo=github" alt="GitHub Stars"/>
-    </a>
-    <a href="https://github.com/your-username/Android-AntiTheft/forks">
-      <img src="https://img.shields.io/github/forks/your-username/Android-AntiTheft?style=flat-square&colorA=1F242B&colorB=8B5CF6&label=Forks&logo=github" alt="GitHub Forks"/>
-    </a>
-    <a href="https://github.com/your-username/Android-AntiTheft/blob/main/LICENSE">
-      <img src="https://img.shields.io/github/license/your-username/Android-AntiTheft?style=flat-square&colorA=1F242B&colorB=8B5CF6&label=License" alt="License"/>
-    </a>
-    <img src="https://img.shields.io/badge/Kotlin-0096D2?style=flat-square&logo=kotlin&logoColor=white&colorA=1F242B&colorB=8B5CF6" alt="Kotlin"/>
-  </p>
-</div>
+# 🚀 Android-AntiTheft
 
----
+Protect your Android device from theft and unauthorized access with powerful remote control features. Keep your data secure and locate your device with ease.
 
 ## ✨ Features
 
-Android-AntiTheft comes packed with essential features to keep your device safe:
-
-*   **Remote Location Tracking** 📍: Pinpoint your device's location on a map in real-time.
-*   **Scream Alarm Trigger** 🔊: Activate a loud alarm remotely, even if the device is on silent mode, to help locate it nearby.
-*   **Device Lock Mechanism** 🔒: Remotely lock your device to prevent unauthorized access to your data.
-*   **SIM Change Detection** 🕵️‍♀️: Get notified if someone attempts to change the SIM card in your device.
-*   **Intruder Photo Capture** 📸: Optionally capture a photo of anyone attempting to unlock your device incorrectly (requires camera permission).
+*   **🔒 Remote Lock & Wipe**: Secure your device or erase sensitive data instantly from anywhere.
+*   **📍 Real-time Location Tracking**: Pinpoint your device's exact location on a map.
+*   **🚨 Loud Siren**: Trigger an alarm to locate your device when it's nearby.
+*   **📸 Intruder Selfie**: Automatically capture photos of anyone attempting unauthorized access.
+*   **🚨 SIM Card Change Detection**: Get notified if your SIM card is replaced.
 
 ## 🧠 Tech Stack
 
-This project is built using modern Android development tools and best practices:
+This project is built with modern Android development best practices.
 
-*   **Language**: Kotlin 🚀
-*   **Framework**: Android SDK (Jetpack Compose / XML Layouts)
-*   **Build System**: Gradle (Kotlin DSL)
-*   **IDE**: Android Studio
+*   **Kotlin**: The preferred modern language for Android application development.
+*   **Android SDK**: Official development kit for building robust Android apps.
+*   **Gradle**: Advanced build automation system for dependency management and project building.
 
 ## ⚙️ Installation
 
-Getting Android-AntiTheft up and running is straightforward. Follow these steps:
+Get `Android-AntiTheft` up and running on your local machine.
 
-1.  **Clone the Repository**:
+1.  **Prerequisites**:
+    *   [Android Studio](https://developer.android.com/studio) (latest version recommended)
+    *   Java Development Kit (JDK) 11 or higher
+2.  **Clone the Repository**:
     ```bash
     git clone https://github.com/your-username/Android-AntiTheft.git
-    ```
-2.  **Navigate to Project Directory**:
-    ```bash
     cd Android-AntiTheft
     ```
 3.  **Open in Android Studio**:
     *   Launch Android Studio.
-    *   Click on `File` > `Open` and select the `Android-AntiTheft` directory.
-4.  **Sync Gradle**:
-    *   Android Studio will automatically sync Gradle. If not, click the "Sync Project with Gradle Files" button (elephant icon in the toolbar).
-5.  **Build the Project**:
-    *   Go to `Build` > `Make Project` or click the hammer icon.
+    *   Select `File > Open` and navigate to the cloned `Android-AntiTheft` directory.
+    *   Allow Gradle to sync the project (this may take a few moments).
+4.  **Build & Run**:
+    *   Connect an Android device or start an emulator.
+    *   Click the `Run` button (▶️) in Android Studio to install and launch the app.
 
 ## ▶️ Usage
 
-Once the project is built, you can run and use the application:
+Once the app is installed, here's how to start using it:
 
-1.  **Run on Device/Emulator**:
-    *   Connect an Android device via USB or select an emulator from the AVD Manager.
-    *   Click the "Run 'app'" button (green play icon) in Android Studio.
-2.  **Initial Setup**:
-    *   Upon first launch, the app will guide you through necessary permissions and configuration (e.g., device administrator rights, emergency contacts).
-3.  **Configure Features**:
-    *   Set up your preferred remote commands (e.g., via SMS from a trusted number) and other anti-theft settings within the app.
+1.  **Launch the App**: Open the "Android-AntiTheft" app from your device's app drawer.
+2.  **Grant Permissions**: Follow the on-screen prompts to grant all necessary permissions (e.g., Device Administrator, Location, SMS). These are crucial for the app's functionality.
+3.  **Activate Anti-Theft**: Set up a recovery email/phone number and activate the anti-theft features within the app's settings.
+4.  **Remote Control**: Use pre-defined SMS commands from a trusted number (configured within the app) to trigger features like locking, locating, or sounding the alarm on your device.
+    *   _Example_: To lock your device, send `LOCK <your-pin>` from your trusted number to the lost device. (Specific commands will be defined in the app itself).
 
 ## 📂 Project Structure
 
-A quick overview of the project's key directories and files:
+A concise overview of the project's key files and directories:
 
-*   `.idea/`: ⚙️ IntelliJ IDEA/Android Studio project configuration files.
-*   `gradle/`: 🛠️ Gradle wrapper files.
-*   `app/`: 📱 The main application module, containing all source code and resources.
-*   `build.gradle.kts`: 🏗️ Project-level Gradle build configuration (Kotlin DSL).
-*   `settings.gradle.kts`: ⚙️ Gradle settings file, defines included modules.
-*   `gradle.properties`: 📝 Gradle project properties and JVM arguments.
-*   `gradlew`, `gradlew.bat`: ⚡ Gradle wrapper scripts for Linux/macOS and Windows respectively.
-*   `.gitignore`: 🚫 Specifies intentionally untracked files to ignore by Git.
-*   `README.md`: 📖 This README file!
+*   `settings.gradle.kts`: Defines project modules.
+*   `build.gradle.kts`: Top-level Gradle build configuration.
+*   `gradle.properties`: Project-wide Gradle properties.
+*   `gradlew`, `gradlew.bat`: Gradle wrapper scripts for Linux/macOS and Windows, respectively.
+*   `.gitignore`: Specifies files and directories to be excluded from Git tracking.
+*   `.idea/`: Contains configuration files for Android Studio.
+    *   `misc.xml`: Miscellaneous project settings.
+    *   `vcs.xml`: Version control system settings.
+    *   `migrations.xml`: Migration history for project settings.
+    *   `gradle.xml`: Gradle-related settings.
+    *   `compiler.xml`: Compiler specific settings.
+    *   `deploymentTargetDropDown.xml`: Deployment target configurations.
+    *   `.gitignore`: Git ignore for `.idea` folder.
+    *   `.name`: Project name in `.idea`.
 
 ## 🤝 Contributing
 
-Contributions are always welcome! Whether it's adding new features, fixing bugs, or improving documentation, your help is valuable.
+Contributions are welcome! If you have suggestions or want to improve the project, please feel free to:
 
-1.  **Fork** this repository.
-2.  **Create a new branch**: `git checkout -b feature/your-feature-name`
-3.  **Commit** your changes: `git commit -m 'feat: Add amazing new feature'`
-4.  **Push** to the branch: `git push origin feature/your-feature-name`
-5.  **Open a Pull Request** describing your changes.
-
-Please ensure your code adheres to the project's coding style and includes appropriate tests.
+1.  Fork the repository.
+2.  Create a new branch (`git checkout -b feature/AmazingFeature`).
+3.  Commit your changes (`git commit -m 'Add some AmazingFeature'`).
+4.  Push to the branch (`git push origin feature/AmazingFeature`).
+5.  Open a Pull Request.
 
 ## 📜 License
 
-This project is licensed under the MIT License. See the `LICENSE` file for more details.
+This project is licensed under the MIT License - see the `LICENSE` file for details.
 
 ---
-
-<div align="center">
-  <p>Made with ❤️ by Your Name</p>
-  <p>Star the repo if you found it useful! ✨</p>
-</div>
-```
 
 ---
 
