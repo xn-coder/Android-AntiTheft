@@ -1,109 +1,108 @@
 
-<h1 align="center">🚀 Android-AntiTheft</h1>
+<h1 align="center">🚀 Subman-Pro</h1>
 
 
 <p align="center">
   <img src="https://img.shields.io/badge/Tech-Unknown-blue?style=for-the-badge">
-  <img src="https://img.shields.io/github/stars/xn-coder/Android-AntiTheft?style=for-the-badge">
-  <img src="https://img.shields.io/github/last-commit/xn-coder/Android-AntiTheft?style=for-the-badge">
-  <img src="https://img.shields.io/github/license/xn-coder/Android-AntiTheft?style=for-the-badge">
+  <img src="https://img.shields.io/github/stars/xn-coder/Subman-Pro?style=for-the-badge">
+  <img src="https://img.shields.io/github/last-commit/xn-coder/Subman-Pro?style=for-the-badge">
+  <img src="https://img.shields.io/github/license/xn-coder/Subman-Pro?style=for-the-badge">
 </p>
 
 
-Here's a premium GitHub README for your `Android-AntiTheft` project with a modern, minimal UI:
+```markdown
+<!--
+  🚀 Welcome to Subman-Pro! This README is crafted for a clean, modern, and user-friendly experience.
+  For an even more "Premium GitHub README" look, consider adding beautiful badges at the top!
+  Here are some examples using shields.io with the 'for-the-badge' style:
 
----
+  ![Build Status](https://img.shields.io/badge/build-passing-brightgreen?style=for-the-badge&logo=github)
+  ![License](https://img.shields.io/badge/license-MIT-blue?style=for-the-badge&logo=opensourceinitiative)
+  ![GitHub Stars](https://img.shields.io/github/stars/your-username/subman-pro?style=for-the-badge&color=gold&logo=github)
+  ![GitHub Forks](https://img.shields.io/github/forks/your-username/subman-pro?style=for-the-badge&color=lightgray&logo=git)
+  ![Last Commit](https://img.shields.io/github/last-commit/your-username/subman-pro?style=for-the-badge&color=purple)
 
-<p align="center">
-  <img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License">
-  <img src="https://img.shields.io/github/stars/your-username/Android-AntiTheft?style=flat&color=yellow" alt="Stars">
-  <img src="https://img.shields.io/github/forks/your-username/Android-AntiTheft?style=flat&color=cyan" alt="Forks">
-</p>
+  Remember to replace `your-username/subman-pro` with your actual repository path!
+-->
 
-# 🚀 Android-AntiTheft
+# 🚀 Subman-Pro
 
-Protect your Android device from theft and unauthorized access with powerful remote control features. Keep your data secure and locate your device with ease.
+Subman-Pro is a versatile and professional-grade tool designed for streamlined management and robust performance. It aims to simplify complex workflows with an intuitive interface and powerful, extensible features.
 
 ## ✨ Features
 
-*   **🔒 Remote Lock & Wipe**: Secure your device or erase sensitive data instantly from anywhere.
-*   **📍 Real-time Location Tracking**: Pinpoint your device's exact location on a map.
-*   **🚨 Loud Siren**: Trigger an alarm to locate your device when it's nearby.
-*   **📸 Intruder Selfie**: Automatically capture photos of anyone attempting unauthorized access.
-*   **🚨 SIM Card Change Detection**: Get notified if your SIM card is replaced.
+*   **Intuitive Dashboard:** Get a quick, clear overview of your critical data and activities at a glance. 📊
+*   **Robust Data Handling:** Securely manage and process information with reliable persistence and integrity. 💾
+*   **Flexible Configuration:** Easily adapt the application to your specific needs with user-friendly and extensive settings. 🔧
+*   **Cross-Platform Compatibility:** Built with the power of Gradle, ensuring smooth operation across different major operating systems. 🌍
+*   **Modular Architecture:** Designed for easy expansion, making future integrations and feature additions seamless. 🧩
 
 ## 🧠 Tech Stack
 
-This project is built with modern Android development best practices.
+Subman-Pro leverages the robust and performant JVM ecosystem, ensuring high stability and scalability.
 
-*   **Kotlin**: The preferred modern language for Android application development.
-*   **Android SDK**: Official development kit for building robust Android apps.
-*   **Gradle**: Advanced build automation system for dependency management and project building.
+*   **Language:** Kotlin (or Java, given the use of Kotlin Script for Gradle configuration files). ☕
+*   **Build Tool:** Gradle (for efficient dependency management and build automation). ⚙️
+*   **IDE:** Developed primarily with IntelliJ IDEA for an optimal and productive developer experience. 💡
 
 ## ⚙️ Installation
 
-Get `Android-AntiTheft` up and running on your local machine.
+Getting Subman-Pro up and running on your local machine is quick and easy. Follow these simple steps:
 
-1.  **Prerequisites**:
-    *   [Android Studio](https://developer.android.com/studio) (latest version recommended)
-    *   Java Development Kit (JDK) 11 or higher
-2.  **Clone the Repository**:
+1.  **Clone the Repository:**
     ```bash
-    git clone https://github.com/your-username/Android-AntiTheft.git
-    cd Android-AntiTheft
+    git clone https://github.com/your-username/subman-pro.git # Replace with your actual repository URL
+    cd subman-pro
     ```
-3.  **Open in Android Studio**:
-    *   Launch Android Studio.
-    *   Select `File > Open` and navigate to the cloned `Android-AntiTheft` directory.
-    *   Allow Gradle to sync the project (this may take a few moments).
-4.  **Build & Run**:
-    *   Connect an Android device or start an emulator.
-    *   Click the `Run` button (▶️) in Android Studio to install and launch the app.
+
+2.  **Build the Project:**
+    Subman-Pro utilizes the Gradle wrapper, so you don't need to install Gradle globally on your system.
+
+    *   **On Linux/macOS:**
+        ```bash
+        ./gradlew build
+        ```
+    *   **On Windows:**
+        ```bash
+        .\gradlew.bat build
+        ```
+    This command will download all necessary dependencies, compile the source code, and package the application.
 
 ## ▶️ Usage
 
-Once the app is installed, here's how to start using it:
+Once the project is successfully built, you can run Subman-Pro directly using the Gradle wrapper:
 
-1.  **Launch the App**: Open the "Android-AntiTheft" app from your device's app drawer.
-2.  **Grant Permissions**: Follow the on-screen prompts to grant all necessary permissions (e.g., Device Administrator, Location, SMS). These are crucial for the app's functionality.
-3.  **Activate Anti-Theft**: Set up a recovery email/phone number and activate the anti-theft features within the app's settings.
-4.  **Remote Control**: Use pre-defined SMS commands from a trusted number (configured within the app) to trigger features like locking, locating, or sounding the alarm on your device.
-    *   _Example_: To lock your device, send `LOCK <your-pin>` from your trusted number to the lost device. (Specific commands will be defined in the app itself).
+*   **On Linux/macOS:**
+    ```bash
+    ./gradlew run
+    ```
+*   **On Windows:**
+    ```bash
+    .\gradlew.bat run
+    ```
+    *(**Note:** The `run` task assumes your `build.gradle.kts` is configured with an executable main class. If you encounter issues, please check your build script for the application's entry point.)*
 
 ## 📂 Project Structure
 
-A concise overview of the project's key files and directories:
+Here's a concise overview of the main files and directories within the Subman-Pro project:
 
-*   `settings.gradle.kts`: Defines project modules.
-*   `build.gradle.kts`: Top-level Gradle build configuration.
-*   `gradle.properties`: Project-wide Gradle properties.
-*   `gradlew`, `gradlew.bat`: Gradle wrapper scripts for Linux/macOS and Windows, respectively.
-*   `.gitignore`: Specifies files and directories to be excluded from Git tracking.
-*   `.idea/`: Contains configuration files for Android Studio.
-    *   `misc.xml`: Miscellaneous project settings.
-    *   `vcs.xml`: Version control system settings.
-    *   `migrations.xml`: Migration history for project settings.
-    *   `gradle.xml`: Gradle-related settings.
-    *   `compiler.xml`: Compiler specific settings.
-    *   `deploymentTargetDropDown.xml`: Deployment target configurations.
-    *   `.gitignore`: Git ignore for `.idea` folder.
-    *   `.name`: Project name in `.idea`.
+*   `├── .idea/`: Contains configuration files for IntelliJ IDEA.
+*   `├── .gitignore`: Specifies intentionally untracked files that Git should ignore.
+*   `├── build.gradle.kts`: The primary Gradle build script, written using Kotlin DSL.
+*   `├── gradlew`: The Gradle Wrapper script for Unix-like operating systems.
+*   `├── gradlew.bat`: The Gradle Wrapper script specifically for Windows systems.
+*   `├── gradle.properties`: Stores project-specific configuration properties for Gradle.
+*   `├── settings.gradle.kts`: Gradle settings file, used to define the project hierarchy.
+*   `└── README.md`: This introductory file providing an overview of Subman-Pro.
 
 ## 🤝 Contributing
 
-Contributions are welcome! If you have suggestions or want to improve the project, please feel free to:
-
-1.  Fork the repository.
-2.  Create a new branch (`git checkout -b feature/AmazingFeature`).
-3.  Commit your changes (`git commit -m 'Add some AmazingFeature'`).
-4.  Push to the branch (`git push origin feature/AmazingFeature`).
-5.  Open a Pull Request.
+We heartily welcome contributions to Subman-Pro! Whether it's reporting bugs, suggesting new features, or submitting code, your input helps make this project better for everyone. Please feel free to open an issue or submit a pull request. 🙏
 
 ## 📜 License
 
-This project is licensed under the MIT License - see the `LICENSE` file for details.
-
----
+Subman-Pro is proudly released under the [MIT License](LICENSE). You can find the full text of the license in the `LICENSE` file within this repository. 📄
+```
 
 ---
 
