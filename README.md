@@ -1,157 +1,90 @@
 
-<h1 align="center">🚀 Navigator</h1>
+<h1 align="center">🚀 Android-AntiTheft</h1>
 
 
 <p align="center">
   <img src="https://img.shields.io/badge/Tech-Unknown-blue?style=for-the-badge">
-  <img src="https://img.shields.io/github/stars/xn-coder/Navigator?style=for-the-badge">
-  <img src="https://img.shields.io/github/last-commit/xn-coder/Navigator?style=for-the-badge">
-  <img src="https://img.shields.io/github/license/xn-coder/Navigator?style=for-the-badge">
+  <img src="https://img.shields.io/github/stars/xn-coder/Android-AntiTheft?style=for-the-badge">
+  <img src="https://img.shields.io/github/last-commit/xn-coder/Android-AntiTheft?style=for-the-badge">
+  <img src="https://img.shields.io/github/license/xn-coder/Android-AntiTheft?style=for-the-badge">
 </p>
 
 
-Here's a premium, modern, and minimal GitHub README for your **Navigator** project, assuming a Java/Kotlin and Gradle tech stack based on the provided files.
-
----
-
 ```markdown
 <div align="center">
-  <!-- Replace this logo with your actual project logo -->
-  <img src="https://raw.githubusercontent.com/MihirRajput-23/GitHub-Profile-Badges/main/nav-icon.png" alt="Navigator Logo" width="150" height="150"> 
-  <h1>🚀 Navigator</h1>
-  <p>Your ultimate guide through complex codebases. Effortlessly explore, understand, and navigate your projects with intuitive tools.</p>
-
-  <p>
-    <!-- Shields.io Badges - Remember to replace 'your-username' and 'Navigator' with your actual repository details! -->
-    <a href="https://github.com/your-username/Navigator/actions/workflows/ci.yml">
-      <img src="https://img.shields.io/github/actions/workflow/status/your-username/Navigator/ci.yml?branch=main&label=build&logo=github&style=for-the-badge&color=28a745" alt="Build Status">
-    </a>
-    <a href="https://github.com/your-username/Navigator/blob/main/LICENSE">
-      <img src="https://img.shields.io/github/license/your-username/Navigator?style=for-the-badge&color=blueviolet" alt="License">
-    </a>
-    <img src="https://img.shields.io/github/stars/your-username/Navigator?style=for-the-badge&color=gold&logo=github" alt="GitHub Stars">
-    <img src="https://img.shields.io/github/forks/your-username/Navigator?style=for-the-badge&color=teal&logo=github" alt="GitHub Forks">
-  </p>
+  <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Police%20Car.png" alt="Police Car" width="100" />
+  <h1>🚀 Android-AntiTheft</h1>
 </div>
 
----
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Top Language](https://img.shields.io/github/languages/top/YOUR_GITHUB_USERNAME/Android-AntiTheft?color=orange)](https://github.com/YOUR_GITHUB_USERNAME/Android-AntiTheft)
+[![GitHub Stars](https://img.shields.io/github/stars/YOUR_GITHUB_USERNAME/Android-AntiTheft?style=social)](https://github.com/YOUR_GITHUB_USERNAME/Android-AntiTheft/stargazers)
+
+Secure your Android device from theft and loss with this comprehensive anti-theft solution. Keep your personal data safe and locate your device with ease.
 
 ## ✨ Features
-
-Navigator is packed with powerful features designed to streamline your development workflow and enhance project understanding:
-
-*   **🗺️ Intuitive Project Exploration:** Effortlessly browse files, directories, and modules with a clean, user-friendly interface.
-*   **🔎 Quick Search Functionality:** Instantly locate files, classes, or keywords across your entire project, saving you valuable time.
-*   **🔗 Dependency Visualization:** Understand how different parts of your codebase connect with interactive graphs and clear overviews.
-*   **🌳 Code Structure Overview:** Get a high-level architectural view to quickly grasp complex projects and their interdependencies.
-*   **⚡ Blazing Fast Performance:** Engineered for speed, ensuring a smooth and responsive experience even with very large repositories.
-
----
+*   📍 **Remote Location Tracking:** Pinpoint your device's exact location on a map.
+*   🔒 **Remote Lock & Wipe:** Securely lock your device or erase sensitive data if it's unrecoverable.
+*   🚨 **Scream Alarm:** Trigger a loud alarm to help find your device if it's nearby.
+*   📸 **Intruder Selfie:** Capture a photo of anyone attempting to unlock your device with failed attempts.
+*   📞 **SIM Change Detection:** Get notified if your device's SIM card is swapped.
 
 ## 🧠 Tech Stack
+This project is built using modern Android development best practices:
 
-Navigator leverages modern, robust technologies for a high-performance, cross-platform, and reliable user experience:
-
-*   **☕ Java / 🍵 Kotlin:** The core application logic is built with these powerful, battle-tested JVM languages.
-*   **🛠️ Gradle:** Utilized for efficient dependency management, robust build automation, and project orchestration.
-*   **🌐 Cross-Platform:** Designed to run seamlessly across various operating systems, including Windows, macOS, and Linux.
-
----
+*   **Kotlin:** Primary programming language for robust Android applications.
+*   **Android SDK:** Core framework and APIs for Android app development.
+*   **Gradle:** Powerful build automation tool used throughout the project.
+*   **Firebase:** (Optional) Likely used for secure remote commands, notifications, and possibly user authentication.
 
 ## ⚙️ Installation
+Getting Android-AntiTheft up and running is straightforward!
 
-Getting Navigator up and running on your local machine is straightforward. Follow these steps:
-
-1.  **Clone the Repository:**
+1.  **Clone the repository:**
     ```bash
-    git clone https://github.com/your-username/Navigator.git
-    cd Navigator
+    git clone https://github.com/YOUR_GITHUB_USERNAME/Android-AntiTheft.git
+    cd Android-AntiTheft
     ```
-
-2.  **Build the Project:**
-    Execute the appropriate Gradle Wrapper command to compile the source code and assemble the application:
-
-    *   **On Windows:**
-        ```bash
-        ./gradlew.bat build
-        ```
-    *   **On macOS/Linux:**
-        ```bash
-        ./gradlew build
-        ```
-
----
+2.  **Open in Android Studio:**
+    *   Launch Android Studio.
+    *   Select `File` > `Open...`
+    *   Navigate to the cloned `Android-AntiTheft` directory and click `Open`.
+3.  **Sync Gradle:**
+    *   Android Studio will automatically prompt you to sync Gradle. If not, click the "Sync Project with Gradle Files" button (🐘 icon) in the toolbar.
+4.  **Run on device/emulator:**
+    *   Connect an Android device or start an emulator.
+    *   Click the `Run 'app'` button (▶️ green play icon) in Android Studio.
 
 ## ▶️ Usage
+After installation, configure the app to protect your device:
 
-Once the project is built, you can easily launch Navigator to start exploring your codebases:
-
-*   **Start the Application:**
-    You have two primary options to run Navigator:
-
-    *   **Option 1 (Using Gradle's Run Task):**
-        This is the recommended method for development and quick testing.
-        ```bash
-        # On Windows
-        ./gradlew.bat run
-        # On macOS/Linux
-        ./gradlew run
-        ```
-    *   **Option 2 (Direct JAR Execution - after `build`):**
-        If you've already built the project, you can run the generated JAR file directly. (Note: The exact JAR name might vary with project versioning).
-        ```bash
-        java -jar build/libs/Navigator-1.0-SNAPSHOT.jar # Adjust version if needed
-        ```
-    Follow the on-screen instructions within the Navigator application to begin exploring your projects!
-
----
+1.  **Launch the App:** Open `Android-AntiTheft` from your device's app drawer.
+2.  **Grant Permissions:** Allow necessary permissions (e.g., Location, Camera, Device Admin) for full functionality.
+3.  **Set Up Security:** Follow the in-app prompts to set your security pin, emergency contacts, and activate desired anti-theft features.
+4.  **Test Features:** Familiarize yourself with how to remotely trigger alarms, lock your device, and track its location from a trusted contact or web interface.
 
 ## 📂 Project Structure
+A brief overview of the project's key files and directories:
 
-The Navigator repository is organized to ensure clarity, maintainability, and ease of navigation:
-
-```
-Navigator/
-├── .idea/                           # 💡 IntelliJ IDEA project configuration files
-│   ├── misc.xml
-│   ├── vcs.xml
-│   ├── migrations.xml
-│   ├── gradle.xml
-│   ├── compiler.xml
-│   ├── deploymentTargetDropDown.xml
-│   ├── .gitignore
-│   └── .name
-├── .gitignore                       # 🚫 Specifies intentionally untracked files to ignore (e.g., build artifacts)
-├── build.gradle.kts                 # ⚙️ Primary Gradle build script written in Kotlin DSL
-├── gradlew                          # 🚀 Gradle Wrapper script for Unix-like systems (ensures consistent builds)
-├── gradlew.bat                      # 🚀 Gradle Wrapper script for Windows systems
-├── gradle.properties                # 📝 Configuration properties for Gradle, like JVM arguments or versions
-├── README.md                        # 📄 This main README file, providing an overview of the project
-└── settings.gradle.kts              # 🛠️ Gradle settings file, essential for multi-project builds
-```
-
----
+*   `README.md`: This documentation file.
+*   `settings.gradle.kts`: Gradle settings for project module configuration.
+*   `build.gradle.kts`: Project-level build configuration for Gradle.
+*   `gradle.properties`: Global Gradle properties for the project.
+*   `gradlew`, `gradlew.bat`: Gradle Wrapper scripts for consistent builds across environments.
+*   `.gitignore`: Specifies files and directories to be ignored by Git.
+*   `.idea/`: Directory containing Android Studio project configuration files (e.g., `misc.xml`, `vcs.xml`, `gradle.xml`).
 
 ## 🤝 Contributing
+We welcome contributions! If you have ideas for new features, bug fixes, or improvements:
 
-We heartily welcome contributions to Navigator! Your ideas, bug reports, and code enhancements are invaluable to making this project better for everyone.
-
-*   Feel free to **open an issue** if you find a bug or have a feature request.
-*   Consider **submitting a pull request** with your suggested improvements.
-
-Thank you for helping us navigate the future! ✨
-
----
+1.  **Fork** the repository.
+2.  **Create a new branch** (`git checkout -b feature/AmazingFeature`).
+3.  **Commit** your changes (`git commit -m 'Add some AmazingFeature'`).
+4.  **Push** to the branch (`git push origin feature/AmazingFeature`).
+5.  **Open a Pull Request**.
 
 ## 📜 License
-
-Navigator is an open-source project released under the **MIT License**. For complete details, please see the `LICENSE` file in the repository.
-
----
-
-<div align="center">
-  <p>Made with ❤️ by the Navigator Team</p>
-</div>
+This project is licensed under the **MIT License**. See the `LICENSE` file for more details.
 ```
 
 ---
